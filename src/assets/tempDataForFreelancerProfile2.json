@@ -1,0 +1,13 @@
+{
+    "picture": "../assets/logo/Logo-Pin.png",
+    "category": 1,
+    "firstName": "Freeboard",
+    "lastName": "(Freelancer Name)",
+    "links": "[{\"source\": \"twitter\",\"value\": \"twitterlinkhere\",\"icon\": \"bi-twitter\"},{\"source\": \"github\",\"value\": \"githublinkhere\",\"icon\": \"bi-github\"},{\"source\": \"instagram\",\"value\": \"instagramlinkhere\",\"icon\": \"bi-instagram\"},{\"source\": \"facebook\",\"value\": \"facebooklinkhere\",\"icon\": \"bi-facebook\"},{\"source\": \"website\",\"value\": \"websitelinkhere\",\"icon\": \"bi-globe\"}]",
+    "skillset": "[{\"skill\": \"Kan zelf invoeren\",\"value\": \"5\"},{\"skill\": \"Web frontend\",\"value\": \"45\"},{\"skill\": \"Mobile frontend\",\"value\": \"55\"},{\"skill\": \"API\",\"value\": \"75\"},{\"skill\": \"Backend\",\"value\": \"20\"}]",
+    "title": "Developer",
+    "email": "freelancer@freeboard.com",
+    "phone": "0612345678",
+    "location": "Amsterdam",
+    "country": "The Netherlands"
+}

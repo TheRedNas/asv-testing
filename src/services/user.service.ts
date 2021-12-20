@@ -1,12 +1,17 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { Company } from 'src/models/Company';
+import { Category } from 'src/models/enums/Category';
+import { Freelancer } from 'src/models/Freelancer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private it: number = 1;
+  private healthcare: number = 2;
 
   constructor(private http: HttpClient) { }
 
@@ -53,5 +58,31 @@ export class UserService {
     }
     console.log(errorMessage);
     return throwError(errorMessage);
+  }
+
+  getUserCompany(): Observable<Company> {
+    return this.http.get<Company>("./assets/tempDataForCompanyProfile.json");
+  }
+
+  getUserFreelancer(): Observable<Freelancer> {
+    return this.http.get<Freelancer>("./assets/tempDataForFreelancerProfile.json");
+  }
+
+  postUserFreelancer(freelancer: Freelancer): never {
+    throw new Error("Not implemeted yet, needs to be connected to non-localhost server apparently");
+  }
+  
+  public defineCategory(category: number): Category {
+    switch (category) {
+      case this.it: {
+        return Category.IT;
+      }
+      case this.healthcare: {
+        return Category.Healthcare;
+      }
+      default: {
+        return Category.NA;
+      }
+    }
   }
 }

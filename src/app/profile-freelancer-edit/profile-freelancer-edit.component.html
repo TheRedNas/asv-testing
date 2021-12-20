@@ -1,0 +1,168 @@
+<div class="large-separator-top">
+    <div class="container">
+        <div class="main-body">
+            <div class="row gutters-sm" *ngIf="freelancer != undefined">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="{{freelancer.picture}}" alt="Admin" class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                    <h4>{{freelancer.givenName}}&nbsp;{{freelancer.surname}}</h4>
+                                    <p class="text-secondary mb-1">{{freelancer.title}}</p>
+                                    <p class="text-muted font-size-sm">{{freelancer.location}}, {{freelancer.country}}
+                                    </p>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <button mat-button class="btn-theme" (click)="submitProfile()">Save
+                                            changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mt-3" *ngIf="freelancer.links.length > 0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item justify-content-between flex-wrap"
+                                *ngFor="let link of freelancer.links">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <i class="bi {{link.icon}} icon-link"></i>&nbsp;
+                                        <mat-slide-toggle class="example-margin" [checked]="link.active">
+                                        </mat-slide-toggle>
+                                    </div>
+                                    <div class="col-sm-8" *ngIf="link.source == 'twitter'">
+                                        <div class="input-group mr-auto">
+                                            <span class="input-group-text" id="basic-addon1">@</span>
+                                            <input type="text" class="form-control" value="{{link.value}}"
+                                                placeholder="Username">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8" *ngIf="link.source == 'github'">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" value="{{link.value}}"
+                                                placeholder="freeboard">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8" *ngIf="link.source == 'instagram'">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" value="{{link.value}}"
+                                                placeholder="freeboard">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8" *ngIf="link.source == 'facebook'">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" value="{{link.value}}"
+                                                placeholder="freeboard">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8" *ngIf="link.source == 'website'">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1">https://</span>
+                                            <input type="text" class="form-control" value="{{link.value}}"
+                                                placeholder="freeboard">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <mat-form-field class="full-width-field col-sm-12" appearance="fill">
+                                    <mat-label>First name</mat-label>
+                                    <input type="tel" #firstName matInput placeholder="I.e. Rick"
+                                        [value]="freelancer.givenName">
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field class="full-width-field col-sm-12" appearance="fill">
+                                    <mat-label>Last name</mat-label>
+                                    <input type="tel" #lastName matInput placeholder="I.e. Gentlemen"
+                                        [value]="freelancer.surname">
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field class="full-width-field col-sm-12" appearance="fill">
+                                    <mat-label>Title</mat-label>
+                                    <input type="tel" #title matInput placeholder="I.e. Developer"
+                                        [value]="freelancer.title">
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field class="full-width-field col-sm-12" appearance="fill">
+                                    <mat-label>Location</mat-label>
+                                    <input type="tel" #location matInput placeholder="I.e. Amsterdam"
+                                        [value]="freelancer.location">
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field class="full-width-field col-sm-12" appearance="fill">
+                                    <mat-label>Country</mat-label>
+                                    <input type="tel" #country matInput placeholder="I.e. The Netherlands"
+                                        [value]="freelancer.country">
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field class="full-width-field col-sm-12" appearance="fill">
+                                    <mat-label>Email</mat-label>
+                                    <input type="tel" #email matInput placeholder="I.e. your@email.com"
+                                        [value]="freelancer.email">
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field class="full-width-field col-sm-12" appearance="fill">
+                                    <mat-label>Phone</mat-label>
+                                    <input type="tel" #phone matInput placeholder="I.e. (06) 12345678"
+                                        [value]="freelancer.phone">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row gutters-sm">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body" *ngIf="freelancer.links.length > 0">
+                                    <div class="row">
+                                        <h6 class="d-flex align-items-center mb-3"><i
+                                                class="bi bi-award-fill skill-icon"></i>&nbsp;Skill set</h6>
+                                    </div>
+                                    <div *ngFor="let skill of freelancer.skillset; let index = index">
+                                        <mat-form-field class="full-width-field col-sm-12" appearance="fill">
+                                            <mat-label>Title</mat-label>
+                                            <input type="tel" #skill{{index}} matInput placeholder="I.e. JavaScript"
+                                                [value]="skill.skill">
+                                            <button matSuffix mat-icon-button aria-label="Clear"
+                                                (click)="removeSkillset(index)">
+                                                <mat-icon>delete</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                        <mat-slider class="col-sm-12 skillset-slider" thumbLabel step="1" min="0"
+                                            max="100" [(ngModel)]="skill.value">
+                                        </mat-slider>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <button mat-button class="btn-add-skill col-sm-12"
+                                                (click)="addSkillSet()"><i
+                                                    class="bi bi-plus-circle icon-add-skill"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="freelancer == undefined">
+                <mat-spinner></mat-spinner>
+            </div>
+        </div>
+    </div>
+</div>

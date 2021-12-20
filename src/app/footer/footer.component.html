@@ -4,6 +4,7 @@
             <div class="col-lg-3 mb-3">
                 <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" [routerLink]="['/']"
                     aria-label="Freeboard">
+                    <img src="../../assets/logo/Logo-Pin.png" alt="Freeboard Logo" class="logo">
                     <span class="fs-5">Freeboard</span>
                 </a>
                 <ul class="list-unstyled small text-muted">
@@ -13,11 +14,12 @@
             <div class="col-6 col-lg-2 offset-lg-1 mb-3">
                 <h5>Links</h5>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a [routerLink]="['/']">Home</a></li>
-                    <li class="mb-2"><a [routerLink]="['/faq']">F.A.Q</a></li>
+                    <li class="mb-2"><a [routerLink]="['/home']">Home</a></li>
                     <li class="mb-2"><a [routerLink]="['/search']">Search</a></li>
-                    <li class="mb-2"><a href="https://themes.getbootstrap.com/">Themes</a></li>
-                    <li class="mb-2"><a href="https://blog.getbootstrap.com/">Blog</a></li>
+                    <li class="mb-2"><a [routerLink]="['/post/create']">Create a Post</a></li>
+                    <li class="mb-2"><a [routerLink]="['/about']">About</a></li>
+                    <li class="mb-2"><a [routerLink]="['/faq']">F.A.Q.</a></li>
+                    <li class="mb-2"><a [routerLink]="['/profile']">Profile</a></li>
                 </ul>
             </div>
             <div class="col-6 col-lg-2 mb-3">

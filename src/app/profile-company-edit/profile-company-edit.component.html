@@ -1,0 +1,119 @@
+<div class="large-separator-top">
+    <div class="container">
+        <div class="main-body">
+            <div class="row gutters-sm" *ngIf="company != undefined">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="{{company.picture}}" alt="Admin" class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                    <h4>{{company.name}}</h4>
+                                    <p class="text-muted font-size-sm">Amsterdam, Nederland (HC)
+                                    </p>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <button mat-button class="btn-theme" (click)="submitProfile()">Save
+                                            changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mt-3" *ngIf="company.links.length > 0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item justify-content-between flex-wrap"
+                                *ngFor="let link of company.links">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <i class="bi {{link.icon}} icon-link"></i>&nbsp;
+                                        <mat-slide-toggle class="example-margin" [checked]="link.active">
+                                        </mat-slide-toggle>
+                                    </div>
+                                    <div class="col-sm-8" *ngIf="link.source == 'twitter'">
+                                        <div class="input-group mr-auto">
+                                            <span class="input-group-text" id="basic-addon1">@</span>
+                                            <input type="text" class="form-control" value="{{link.value}}"
+                                                placeholder="Username">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8" *ngIf="link.source == 'github'">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" value="{{link.value}}"
+                                                placeholder="freeboard">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8" *ngIf="link.source == 'instagram'">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" value="{{link.value}}"
+                                                placeholder="freeboard">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8" *ngIf="link.source == 'facebook'">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" value="{{link.value}}"
+                                                placeholder="freeboard">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8" *ngIf="link.source == 'website'">
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1">https://</span>
+                                            <input type="text" class="form-control" value="{{link.value}}"
+                                                placeholder="freeboard">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <mat-form-field class="full-width-field col-sm-12" appearance="fill">
+                                    <mat-label>Name</mat-label>
+                                    <input type="tel" #name matInput placeholder="I.e. Freeboard"
+                                        [value]="company.name">
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field class="full-width-field col-sm-12" appearance="fill">
+                                    <mat-label>Description</mat-label>
+                                    <input type="tel" #description matInput placeholder="I.e. We are..."
+                                        [value]="company.description">
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field class="full-width-field col-sm-12" appearance="fill">
+                                    <mat-label>email</mat-label>
+                                    <input type="tel" #email matInput placeholder="I.e. info@freeboard.com"
+                                        [value]="company.email">
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field class="full-width-field col-sm-12" appearance="fill">
+                                    <mat-label>Phone</mat-label>
+                                    <input type="tel" #phone matInput placeholder="I.e. 0612345678"
+                                        [value]="company.phone">
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field class="full-width-field col-sm-12" appearance="fill">
+                                    <mat-label>Address</mat-label>
+                                    <input type="tel" #address matInput placeholder="I.e. Amsterdam"
+                                        [value]="company.address">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="company == undefined">
+                <mat-spinner></mat-spinner>
+            </div>
+        </div>
+    </div>
+</div>

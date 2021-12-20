@@ -1,0 +1,10 @@
+{
+    "picture": "../assets/logo/Logo-Pin.png",
+    "category": 1,
+    "name": "Freeboard (Company Name)",
+    "description": "Description",
+    "email": "info@freeboard.nl",
+    "links": "[{\"source\": \"twitter\",\"value\": \"twitterlinkhere\",\"icon\": \"bi-twitter\",\"active\": \"false\"},{\"source\": \"github\",\"value\": \"githublinkhere\",\"icon\": \"bi-github\",\"active\": \"true\"},{\"source\": \"instagram\",\"value\": \"instagramlinkhere\",\"icon\": \"bi-instagram\",\"active\": \"false\"},{\"source\": \"facebook\",\"value\": \"facebooklinkhere\",\"icon\": \"bi-facebook\",\"active\": \"true\"},{\"source\": \"website\",\"value\": \"websitelinkhere\",\"icon\": \"bi-globe\",\"active\": \"true\"}]",
+    "phone": "phone",
+    "address": "address"
+}

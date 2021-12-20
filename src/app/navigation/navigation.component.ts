@@ -15,20 +15,20 @@ export class NavigationComponent implements OnInit {
     // Subscribe to isLoggedIn to track if user is logged in or not.
     this.authService.isLoggedIn.subscribe(isLoggedIn => {
       this.loginDisplay = isLoggedIn;
-    })
+    });
   }
 
   /**
-   * Redirects the user to the signin/signup page.
+   * Logs in the user.
    */
   login() {
-    this.authService.loginUser();
+    this.authService.login();
   }
 
   /**
    * Logs the user out.
    */
   logout() {
-    this.authService.logoutUser();
+    this.authService.logout();
   }
 }

@@ -1,42 +1,94 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map, retry } from 'rxjs/operators';
-import { Post } from 'src/models/post';
-import { CsudInterface } from '../models/csudinterface';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {Injectable, OnInit} from '@angular/core';
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
+import {catchError, map, retry} from 'rxjs/operators';
+import {Post} from 'src/models/Post';
+import {CsudInterface} from "../models/interfaces/CsudInterface";
+import {Company} from "../models/Company";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService implements CsudInterface {
 
-  postUrl = 'assets/searchData.json';
-  post: Post[] | undefined;
+  private readonly createPostURI = "https://func-freeboard-westeu-01.azurewebsites.net/api/CreatePostHttpTrigger?code=ov8hB894kGXPYJEh/lpVTYhUf2mUJHBVZCNg2YolpAFOgbKt67zeZA==";
+  private readonly getPostsURI = "https://func-freeboard-westeu-01.azurewebsites.net/api/GetPostsHttpTrigger?code=j5gxigUIzRnDveJyZhcccBzrwOof0zI/OxrRUymzQZmtuffXRlfQxg==";
+  private _success: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) { }
+  localhostURL = "http://localhost:7071/api/";
+  postUrl = 'assets/searchData.json';
+
+  constructor(private http: HttpClient) {
+
+  }
+
   create(data: any): Observable<any> {
     throw new Error('Method not implemented.');
   }
+
   show(): Observable<any> {
     throw new Error('Method not implemented.');
   }
+
   update(data: any): Observable<any> {
     throw new Error('Method not implemented.');
   }
+
   delete(id: string): void {
     throw new Error('Method not implemented.');
   }
 
-  getPosts(amount: number, offset: number, filters:Object): Observable<any> {
-    return this.http.get(this.postUrl,{})
-    .pipe(
-      retry(3),
-      catchError(this.handleError)
-    );
+  getPosts(amount: number, offset: number, filters: Object): Observable<any> {
+    return this.http.get(this.getPostsURI, {})
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
   }
 
-  GetPostById(id: string): void {
-    throw new Error('Method not implemented.');
+  public getPostsFromAzure(queryParams?: any): Observable<Post[]> {
+    let appendix = '&';
+    if (queryParams) appendix += this.serialize(queryParams)
+    
+    return this.http.get<Post[]>(this.getPostsURI+appendix);
+  }
+
+  public createPost(post: Post, accessToken: string, accountId?: string,) {
+    this.http.post(`${this.createPostURI}&accountId=${accountId}`, JSON.stringify(post), {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `${accessToken}`
+      })
+    })
+      .subscribe(
+        (response: any) => {
+          console.log(response);
+        },
+        (error: HttpErrorResponse) => {
+          this.handleError(error);
+        }, () => {
+          this._success.next(true);
+        }
+      );
+  }
+
+  serialize = function(obj: any) {
+    var str = [];
+    for (var p in obj)
+      if (obj.hasOwnProperty(p)) {
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+      }
+    return str.join("&");
+  }
+
+  //TODO adjust this to be correct later when needed.
+  public getPost(rowKey: string, partitionKey: string): Observable<Post[]> {
+    return this.http.get<Post[]>(this.localhostURL + 'GetPostHttpTrigger');
+  }
+
+  //TODO adjust this to be correct later when needed.
+  public getPostbyUser(accountId: string): Observable<Post> {
+    return this.http.get<Post>(`${this.localhostURL}GetPostsByUserHttpTrigger?accountId=${accountId}`);
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -53,4 +105,9 @@ export class PostService implements CsudInterface {
     return throwError(
       'Something bad happened; please try again later.');
   }
+
+  public getSucces() {
+    return this._success
+  }
+
 }

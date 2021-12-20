@@ -1,3 +1,4 @@
+import 'froala-editor/js/plugins.pkgd.min.js'; // Do not touch, somehow works this way
 import { NgModule } from '@angular/core';
 import { DatePipe } from '@angular/common'
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,25 +11,26 @@ import { FaqComponent } from './faq/faq.component';
 import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
-import { ProfileComponent } from './profile/profile.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { PostComponent } from './post/post.component';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
 import { HomeComponent } from './home/home.component';
-import { PostComponent } from './post/post.component';
-import { PostEditComponent } from './post-edit/post-edit.component';
 import { PostCreateComponent } from './post-create/post-create.component';
-import { PostService } from 'src/services/post.service';
+import { ProfileFreelancerComponent } from './profile-freelancer/profile-freelancer.component';
+import { ProfileCompanyComponent } from './profile-company/profile-company.component';
+import { ProfileCompanyEditComponent } from './profile-company-edit/profile-company-edit.component';
+import { ProfileFreelancerEditComponent } from './profile-freelancer-edit/profile-freelancer-edit.component';
 
+import { PostService } from 'src/services/post.service';
 import { UserService } from 'src/services/user.service';
 import { MsalGuard, MsalInterceptor, MsalModule, MsalRedirectComponent } from '@azure/msal-angular';
 import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 // Import the Azure AD B2C configuration
-import { msalConfig, protectedResources } from './auth-config';
+import {msalConfig, protectedResources} from './auth-config';
 // Import the Angular HTTP interceptor.
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-// Import Froala editor
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-import 'froala-editor/js/plugins.pkgd.min.js'; // Do not touch, somehow works this way
+
 
 // -----------    Material Imports    -----------
 //import { MatIconModule } from "@angular/material/icon";
@@ -44,6 +46,10 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select'
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
 
 const materialModules = [
   MatIconModule,
@@ -57,7 +63,11 @@ const materialModules = [
   MatFormFieldModule,
   MatSelectModule,
   MatAutocompleteModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  MatProgressSpinnerModule,
+  MatSnackBarModule,
+  MatSlideToggleModule,
+  MatSliderModule
 ];
 
 const froala = [
@@ -70,17 +80,19 @@ const froala = [
   declarations: [
     AppComponent,
     FaqComponent,
+    SearchComponent,
     FooterComponent,
     AboutComponent,
-    ProfileComponent,
+    ProfileFreelancerComponent,
     NavigationComponent,
+    PostComponent,
     PageNotFoundComponentComponent,
     HomeComponent,
     FaqComponent,
-    SearchComponent,
-    PostComponent,
     PostCreateComponent,
-    PostEditComponent
+    ProfileCompanyComponent,
+    ProfileCompanyEditComponent,
+    ProfileFreelancerEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -126,4 +138,5 @@ const froala = [
     MsalRedirectComponent
   ]
 })
-export class AppModule { }
+export class AppModule {
+}

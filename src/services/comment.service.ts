@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Comment } from 'src/models/comment';
-import { CsudInterface } from '../models/csudinterface';
+import { Comment } from 'src/models/Comment';
+import {CsudInterface} from "../models/interfaces/CsudInterface";
 
 @Injectable({
   providedIn: 'root'

@@ -1,52 +1,49 @@
-
 <div class="container large-seperator">
 
-    <!-- Search Input and Filters -->
-    <div class="row p-3">
-        <mat-card class="example-card mb-5 p-4">
-            <mat-card-content>
-                <form class="form">
-                    <mat-form-field class="full-width-field" appearance="fill">
-                        <mat-label>Search</mat-label>
-                        <input type="tel" matInput placeholder="i.e. Javascript">
-                        <mat-icon matSuffix>search</mat-icon>
-                    </mat-form-field>
-                </form>
-
-                <div>
-                    filters
-                </div>
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <!-- Search Input and Filters End-->
-
+  <!-- Search Input and Filters -->
+  <div class="row p-3">
+    <mat-card class="example-card mb-5 p-4">
+      <mat-card-content>
+        <form class="form">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Search</mat-label>
+            <input type="tel" #search matInput placeholder="i.e. Javascript" [value]="searchTerm" (keyup.enter)="onEnter(search.value)" >
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </form>
+        <div>
+          filters
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- Search Input and Filters End-->
     <!-- Search Results -->
     <div class="row">
-        <div *ngFor="let item of searchResults; let i=index" class="col-lg-6">
+        <div *ngFor="let post of searchResults; let i=index" class="col-lg-6">
             <mat-card class="content-card mb-5" *ngIf="i < resultsPerPage">
-                <mat-card-header class="header-title bottom-line" [routerLink]="['/post',item.id]">
-                    <mat-card-title>{{item.title}}</mat-card-title>
-                    <mat-card-subtitle >{{item.dateCreated}}</mat-card-subtitle>
+                <mat-card-header class="header-title bottom-line" (click)="getSpecificPost(post)" [routerLink]="['/post',i]">
+                    <mat-card-title>{{post.title}}</mat-card-title>
+                    <mat-card-subtitle >{{post.dateCreated}}</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
                     <div class="row px-3 pt-3">
                         <div class="col-lg px-sm-0 px-lg-3">
-                            <div class="row mb-4" *ngIf="item.highlights.length > 0">
+                            <div class="row mb-4" *ngIf="post.highlights.length > 0">
                                 <div class="col-12 mb-2">
-                                    <strong>Highlights:</strong> 
+                                    <strong>Highlights:</strong>
                                 </div>
                                 <div class="col-12">
-                                    <mat-chip-list class="scrollable"><mat-chip *ngFor="let tag of item.highlights"> {{tag.name}}</mat-chip> </mat-chip-list>
+                                    <mat-chip-list class="scrollable"><mat-chip *ngFor="let tag of post.highlights"> {{tag}}</mat-chip> </mat-chip-list>
                                 </div>
                             </div>
-                            <p class="overflow" *ngIf="item.content ;else nodescription">
-                                {{item.content}}
-                            </p>
+                            <div class="overflow" *ngIf="post.content ;else nodescription" [innerHTML]="getContent(post.content)">
+                                {{post.content}}
+                            </div>
                         </div>
                     </div>
                 </mat-card-content>
-                <button class="btn btn-theme-inverted" [routerLink]="['/post',item.id]">
+                <button class="btn btn-theme-inverted" (click)="getSpecificPost(post)" [routerLink]="['/post',i]">
                     Read more
                 </button>
             </mat-card>
@@ -60,3 +57,4 @@
         No description available
     </p>
 </ng-template>
+

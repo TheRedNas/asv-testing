@@ -1,18 +1,25 @@
-import { Category } from "src/models/category-enum";
+import { Category } from "./enums/Category";
 
-interface user {
-    guid: string;
-    emailAddress: string;
-    phoneNumber: string;
-    Biography: string;
-    category: Category;
-}
+export abstract class User {
+  private _profilePicture: string;
+  private _category: Category;
 
-export interface freelancer extends user {
-    firstName: string;
-    lastName: string;
-}
+  protected constructor(profilePicture: string, category: Category) {
+    this._profilePicture = profilePicture;
+    this._category = category;
+  }
 
-export interface company extends user {
-    companyName: string;
+  public get picture(): string {
+    return this._profilePicture;
+  }
+  public set picture(value: string) {
+    this._profilePicture = value;
+  }
+
+  public get category(): Category {
+    return this._category;
+  }
+  public set category(value: Category) {
+    this._category = value;
+  }
 }
