@@ -1,0 +1,66 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+html,
+body {
+    height: 100%;
+    background-color: #f9f9f9 !important;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.bg-theme-primary {
+    background-color: #fff !important;
+}
+
+.bg-theme-secundairy {
+    background-color: #39a9db !important;
+}
+
+.text-theme-primary {
+    color: #fff !important;
+}
+
+.text-theme-secundairy {
+    color: #39a9db !important;
+}
+
+.btn-theme {
+    color: #fff !important;
+    background-color: #39a9db !important;
+    border-color: transparent !important;
+}
+
+.btn-theme-inverted {
+    color: #39a9db !important;
+    background-color: transparent !important;
+    border-color: #39a9db !important;
+}
+
+.btn-theme-tertiary {
+    color: #212529 !important;
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+}
+
+.bg-theme-wildcard {
+    background-color: #212529;
+}
+
+.large-seperator {
+    margin-top: 100px;
+}
+
+.large-separator-top {
+    padding-top: 150px!important;
+}
+
+.separator {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}

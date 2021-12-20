@@ -1,0 +1,67 @@
+<!--Edit post introduction-->
+<div class="bg-theme-primary">
+    <div class="container large-separator-top separator">
+        <div class="row text-center">
+            <h1 class="post-title">Create post</h1>
+        </div>
+    </div>
+</div>
+<!--End edit post introduction-->
+<!--Post editor-->
+<div class="container separator">
+    <div class="row">
+        <div class="col-lg-8">
+            <mat-card class="card mb-5">
+                <mat-card-content>
+                    <mat-form-field class="highlight-title" appearance="fill">
+                        <mat-label>Title</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field class="highlight-chip-list" appearance="fill">
+                        <mat-label>Highlights</mat-label>
+                        <mat-chip-list #chipList aria-label="Highlight selection">
+                            <mat-chip *ngFor="let highlight of highlights" [selectable]="selectable"
+                                [removable]="removable" (removed)="remove(highlight)">
+                                {{highlight}}
+                                <button matChipRemove *ngIf="removable">
+                                    <mat-icon>cancel</mat-icon>
+                                </button>
+                            </mat-chip>
+                            <input placeholder="New highlight..." #highlightInput [formControl]="highlightControl"
+                                [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                            <mat-option *ngFor="let highlight of filteredHighlights | async" [value]="highlight">
+                                {{highlight}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <div [froalaEditor]="FroalaEditorOptions"></div>
+                    <div class="col-auto mt-auto">
+                        <button type="button" class="btn btn-warning">Post</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-lg-4">
+            <mat-card class="card mb-5">
+                <mat-card-content>
+                    <div class="column">
+                        <div class="col-auto py-3">
+                            Deze post is 420 keer bekeken
+                        </div>
+                        <div class="col-auto py-3">
+                            Er is 69 keer op deze post gereageerd
+                        </div>
+                        <div class="col-auto mt-auto">
+                            <button type="button" disabled="true" class="btn btn-warning">ik wil werk</button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<!--End post editor-->

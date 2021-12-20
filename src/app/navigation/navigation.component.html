@@ -1,0 +1,23 @@
+<nav class="bg-theme-wildcard text-black fixed-top elevated">
+    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start">
+
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none logo">
+            <img src="../../assets/logo/Logo-PureWhite.png" alt="Freeboard Logo">
+        </a>
+        <nav class="col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <ul class="nav">
+                <li><a [routerLink]="['/home']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Home</a></li>
+                <li><a [routerLink]="['/search']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Search</a></li>
+                <li><a [routerLink]="['/post/create']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Create a Post</a></li>
+                <li><a [routerLink]="['/about']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">About</a></li>
+                <li><a [routerLink]="['/faq']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">F.A.Q.</a></li>
+                <li><a [routerLink]="['/profile']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Profile</a></li>
+            </ul>
+        </nav>
+
+        <div class="text-end fill">
+            <button type="button" *ngIf="!loginDisplay" (click)="login()" class="btn btn-warning">Login</button>
+            <button type="button" *ngIf="loginDisplay" (click)="logout()" class="btn btn-warning">Logout</button>
+        </div>
+    </div>
+</nav>

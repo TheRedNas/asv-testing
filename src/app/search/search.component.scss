@@ -1,0 +1,56 @@
+h3 {
+    font-size: 1.75rem;
+}
+
+.bottom-line {
+    font-size: 16px;
+    border-bottom: 1px rgba(0,0,0,.54) solid;
+}
+
+.overflow {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 140px;
+    word-break: keep-all;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}
+
+.no-description {
+    height: 120px;
+    display: block;
+    text-align: center;
+    font-weight: 700;
+    font-size: 22px;
+    color: #6c757d;
+    line-height: 140px;
+}
+
+.header-image {
+    background-size: cover;
+}
+
+.full-width-field {
+    width: 100%;
+}
+
+.form {
+    width: 100%;
+}
+
+.btn:hover, .header-title:hover, .header-image:hover {
+    cursor: pointer;
+}
+
+.warn {
+    background-color: #f44336;
+    color: #fff;
+}
+
+
+mat-chip{
+  display: inline-block;
+}

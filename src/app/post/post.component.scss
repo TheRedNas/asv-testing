@@ -1,0 +1,43 @@
+h3 {
+    font-size: 24px;
+}
+
+.break {
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.header-image {
+    background-size: cover;
+}
+
+.comment-container {
+
+    .comment-user-container {
+        .name {
+            font-size: 16px;
+            margin-bottom: 6px;
+            padding-top: 4px;
+            font-weight: bold;
+        }
+
+        .date {
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+    }
+
+    .comment-content {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        border-left: #d4d4d4 2px solid;
+        margin-left: 20px;
+        padding-left: 34px;
+        padding-bottom: 4px;
+        padding-top: 4px;
+    }
+}
+
+.btn {
+    width: 100%;
+}

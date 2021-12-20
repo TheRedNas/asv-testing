@@ -1,0 +1,26 @@
+.team-table {
+    background-color: #ececec;
+}
+
+.about-contact {
+    padding-left: 10px;
+}
+
+.about-contact:not(:last-child) {
+    padding-right: 5%;
+    border-right: solid 1px #39a9db;
+}
+
+.about-title {
+    font-size: 48px;
+}
+
+.icon-7 {
+    font-size: 7em;
+    color: #39a9db;
+}
+
+.icon-container {
+    color: #39a9db;
+    min-width: 120px;
+}
