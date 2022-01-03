@@ -13,20 +13,22 @@ import { PostEditComponent } from './post-edit/post-edit.component';
 import { PostCreateComponent } from './post-create/post-create.component';
 import { ProfileCompanyEditComponent } from './profile-company-edit/profile-company-edit.component';
 import { ProfileFreelancerEditComponent } from './profile-freelancer-edit/profile-freelancer-edit.component';
+import {SignupComponent} from "./signup/signup.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'signup', component: SignupComponent, pathMatch: 'full' },
   { path: 'faq', component: FaqComponent, pathMatch: 'full' },
   { path: 'search', component: SearchComponent },
   { path: 'about', component: AboutComponent, pathMatch: 'full' },
-  { path: 'post/create', component: PostCreateComponent, pathMatch: 'full' },
-  { path: 'post/:id', component: PostComponent, pathMatch: 'full' },
+  { path: 'post/create', component: PostCreateComponent, pathMatch: 'full', canActivate: [MsalGuard]  },
+  { path: 'post/:rowKey/:partitionKey', component: PostComponent, pathMatch: 'full'},
   { path: 'post/:id/edit', component: PostEditComponent },
-  { path: 'profile/c', component: ProfileCompanyComponent },
-  { path: 'profile/c/edit', component: ProfileCompanyEditComponent },
-  { path: 'profile/f', component: ProfileFreelancerComponent },
-  { path: 'profile/f/edit', component: ProfileFreelancerEditComponent },
+  { path: 'profile/c', component: ProfileCompanyComponent, canActivate: [MsalGuard] },
+  { path: 'profile/c/edit', component: ProfileCompanyEditComponent, canActivate: [MsalGuard] },
+  { path: 'profile/f', component: ProfileFreelancerComponent, canActivate: [MsalGuard] },
+  { path: 'profile/f/edit', component: ProfileFreelancerEditComponent, canActivate: [MsalGuard] },
   { path: 'pnf', component: PageNotFoundComponentComponent },
   { path: '**', component: PageNotFoundComponentComponent },
 ];

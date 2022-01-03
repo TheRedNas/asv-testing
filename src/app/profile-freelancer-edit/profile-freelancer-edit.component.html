@@ -6,11 +6,11 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="{{freelancer.picture}}" alt="Admin" class="rounded-circle" width="150">
+                                <img src="{{freelancer.profilePicture}}" alt="Admin" class="rounded-circle" width="150">
                                 <div class="mt-3">
                                     <h4>{{freelancer.givenName}}&nbsp;{{freelancer.surname}}</h4>
-                                    <p class="text-secondary mb-1">{{freelancer.title}}</p>
-                                    <p class="text-muted font-size-sm">{{freelancer.location}}, {{freelancer.country}}
+                                    <p class="text-secondary mb-1">{{freelancer.jobTitle}}</p>
+                                    <p class="text-muted font-size-sm">{{freelancer.address}}
                                     </p>
                                 </div>
 
@@ -91,28 +91,21 @@
                                 <mat-form-field class="full-width-field col-sm-12" appearance="fill">
                                     <mat-label>Title</mat-label>
                                     <input type="tel" #title matInput placeholder="I.e. Developer"
-                                        [value]="freelancer.title">
+                                        [value]="freelancer.jobTitle">
                                 </mat-form-field>
                             </div>
                             <div class="row">
                                 <mat-form-field class="full-width-field col-sm-12" appearance="fill">
-                                    <mat-label>Location</mat-label>
-                                    <input type="tel" #location matInput placeholder="I.e. Amsterdam"
-                                        [value]="freelancer.location">
-                                </mat-form-field>
-                            </div>
-                            <div class="row">
-                                <mat-form-field class="full-width-field col-sm-12" appearance="fill">
-                                    <mat-label>Country</mat-label>
-                                    <input type="tel" #country matInput placeholder="I.e. The Netherlands"
-                                        [value]="freelancer.country">
+                                    <mat-label>Address</mat-label>
+                                    <input type="tel" #address matInput placeholder="I.e. Amsterdam"
+                                        [value]="freelancer.address">
                                 </mat-form-field>
                             </div>
                             <div class="row">
                                 <mat-form-field class="full-width-field col-sm-12" appearance="fill">
                                     <mat-label>Email</mat-label>
                                     <input type="tel" #email matInput placeholder="I.e. your@email.com"
-                                        [value]="freelancer.email">
+                                        [value]="freelancer.emailAddress">
                                 </mat-form-field>
                             </div>
                             <div class="row">

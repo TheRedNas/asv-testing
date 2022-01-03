@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
 import {Post} from "../../models/Post";
 import {PostService} from "../../services/post.service";
 import {Observable} from "rxjs";
@@ -6,6 +6,7 @@ import {SearchService} from "../../services/search.service";
 import { Company } from "src/models/Company";
 import {DomSanitizer} from '@angular/platform-browser'
 import { updateDefaultClause } from "typescript";
+import { ThisReceiver } from "@angular/compiler";
 
 @Component({
   selector: 'app-search',
@@ -26,35 +27,42 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.createInitial();
-  }
-
-  createInitial() {
     this.updateData();
   }
 
   updateData() {
     let params: any = {}
-    if (this.searchTerm) {
-      params.searchTerm = this.searchTerm.split(' ').join(',')
-    }
     if (this.resultsPerPage) {
       params.amount = this.resultsPerPage
     }
     if (this.offset) {
       params.offset = this.offset
     }
-    this.postService.getPostsFromAzure(params).subscribe(
-      (data: any[]) => {
-        data.forEach(obj => {
-          this.searchResults.push(new Post(obj._user,obj._title,obj._content,obj._image,obj._highlights,obj.RowKey,obj.Partitionkey,obj.Timestamp))
-        });
-      }
-    )
-  }
+    if (this.searchTerm) {
+      params.searchTerms = this.searchTerm.split(' ').join(',')
+    
+      // searchterm found, using that in params to find posts that contain searchterm
+      this.postService.searchPostsFromAzure(params).subscribe(
+        (data: any) => {
+          this.searchResults.length = 0;
+          data.Results.forEach((obj: any) => {
+              this.searchResults.push(new Post(obj._user,obj._title,obj._content,obj._image,obj._highlights,obj.RowKey,obj.PartitionKey,obj.Timestamp))
+            });
+        }
+      )
+    }
+    else {
 
-  getSpecificPost(post: Post) {
-    this.searchService.setSearchPost(post);
+      // searchterm not found, using default to show first x amount of posts
+      this.postService.getPostsFromAzure(params).subscribe(
+        (data: any) => {
+          this.searchResults.length = 0;
+          data.Results.forEach((obj: any) => {
+              this.searchResults.push(new Post(obj._user,obj._title,obj._content,obj._image,obj._highlights,obj.RowKey,obj.PartitionKey,obj.Timestamp))
+            });
+        }
+      )
+    }
   }
 
   getContent(content: string) {

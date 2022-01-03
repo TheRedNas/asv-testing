@@ -3,6 +3,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Company } from 'src/models/Company';
 import { UserService } from 'src/services/user.service';
+import {User} from "../../models/User";
+import {Freelancer} from "../../models/Freelancer";
 
 @Component({
   selector: 'app-profile-company-edit',
@@ -26,38 +28,37 @@ export class ProfileCompanyEditComponent implements OnInit {
   }
 
   GetUserCompany() {
-    this.userService.getUserCompany().subscribe(
-      (data: Company) => {
-        this.company = new Company(data.picture,
-                                   this.userService.defineCategory(data.category),
-                                   data.name,
-                                   data.description,
-                                   JSON.parse(data.links),
-                                   data.email,
-                                   data.phone,
-                                   data.address), console.log(data)
-      },
-    );
-    console.log(this.company);
+    this.userService.getUser(undefined).then((user: User | undefined) => {
+      if (user === undefined) this.router.navigate(["home"]);
+      else if (user instanceof Freelancer) this.router.navigate(["profile/f"]);
+      else this.company = user as Company;
+    });
   }
 
   submitProfile() {
-    if(this.name == undefined || this.description == undefined || this.email == undefined || 
+    if(this.name == undefined || this.description == undefined || this.email == undefined ||
        this.phone == undefined || this.address == undefined) {
-        this._snackbar.open("Something went wrong, please try again", "close", {duration: this.snackbarDurationInSeconds * 1000});    
-    }
-    else {
-      const tempCompany = new Company("../assets/logo/Logo-Pin.png",
-                                      this.userService.defineCategory(1),
-                                      this.name.nativeElement.value,
-                                      this.description.nativeElement.value,
-                                      JSON.stringify(this.company.links),
-                                      this.email.nativeElement.value,
-                                      this.phone.nativeElement.value,
-                                      this.address.nativeElement.value);
-    // Send object Freelancer to API here
-    this._snackbar.open("Changes saved", "close", {duration: this.snackbarDurationInSeconds * 1000});
-    // this.router.navigate(['/profile/f']);
+        this._snackbar.open("Something went wrong, please try again", "close", {duration: this.snackbarDurationInSeconds * 1000});
+    } else {
+      const editedCompany = new Company(
+        this.email.nativeElement.value,
+        this.company.profilePicture,
+        this.company.category,
+        this.name.nativeElement.value,
+        this.description.nativeElement.value,
+        JSON.stringify(this.company.links),
+        this.phone.nativeElement.value,
+        this.address.nativeElement.value
+      );
+
+      this.userService.updateUser(editedCompany).then(successful => {
+        if (successful) {
+          this._snackbar.open("Changes saved", "close", {duration: this.snackbarDurationInSeconds * 1000});
+          this.router.navigate(["profile/c"]);
+        } else {
+          this._snackbar.open("Something went wrong, please try again", "close", {duration: this.snackbarDurationInSeconds * 1000});
+        }
+      });
     }
   }
 }

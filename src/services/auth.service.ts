@@ -49,7 +49,9 @@ export class AuthService implements OnDestroy {
   private userFlow(userFlowRequest?: RedirectRequest) {
     if (this.msalGuardConfig.authRequest) {
       // Provide the authentication request from the config, if it exist.
-      this.authService.loginRedirect({...this.msalGuardConfig.authRequest, ...userFlowRequest} as RedirectRequest);
+      this.authService.acquireTokenRedirect({...this.msalGuardConfig.authRequest, ...userFlowRequest} as RedirectRequest)
+        .subscribe(result => console.log(result))
+      // this.authService.loginRedirect({...this.msalGuardConfig.authRequest, ...userFlowRequest} as RedirectRequest);
     } else {
       this.authService.loginRedirect(userFlowRequest);
     }
@@ -58,14 +60,14 @@ export class AuthService implements OnDestroy {
   /**
    * Redirects the user to the sign up/sign in page.
    */
-  login() {
-    this.userFlow();
+  public login() {
+    this.userFlow()
   }
 
   /**
    * Logs out the user and redirects to the home page.
    */
-  logout() {
+  public logout() {
     this.authService.logoutRedirect({
       postLogoutRedirectUri: 'http://localhost:4200'
     });
@@ -74,7 +76,7 @@ export class AuthService implements OnDestroy {
   /**
    * Redirects the user to the page to edit the profile.
    */
-  editProfile() {
+  public editProfile() {
     let editProfileFlowRequest = {
       scopes: [],
       authority: b2cPolicies.authorities.editProfile.authority,
@@ -86,7 +88,7 @@ export class AuthService implements OnDestroy {
   /**
    * Redirects the user to the page to reset the password.
    */
-  resetPassword() {
+  public resetPassword() {
     let resetPasswordFlowRequest = {
       scopes: [],
       authority: b2cPolicies.authorities.resetPassword.authority,
@@ -122,18 +124,15 @@ export class AuthService implements OnDestroy {
     return this._accessToken;
   }
 
+  get accountId(): string | undefined {
+    return this.authService.instance.getActiveAccount()?.localAccountId;
+  }
+
   /**
    * @returns {Observable<boolean>} An observable of isLoggedIn.
    */
   get isLoggedIn(): Observable<boolean> {
     return this._isLoggedIn.asObservable();
-  }
-
-  /**
-   * @returns {AccountInfo | null} The active user.
-   */
-  get user(): AccountInfo | null {
-    return this.authService.instance.getActiveAccount();
   }
 
   ngOnDestroy(): void {

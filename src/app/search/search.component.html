@@ -1,14 +1,20 @@
 <div class="container large-seperator">
 
+    <h1 class="page-highlight">
+        <strong>
+            Search for your next oppertunity
+        </strong>
+    </h1>
+
   <!-- Search Input and Filters -->
   <div class="row p-3">
     <mat-card class="example-card mb-5 p-4">
       <mat-card-content>
         <form class="form">
           <mat-form-field class="full-width-field" appearance="fill">
-            <mat-label>Search</mat-label>
-            <input type="tel" #search matInput placeholder="i.e. Javascript" [value]="searchTerm" (keyup.enter)="onEnter(search.value)" >
-            <mat-icon matSuffix>search</mat-icon>
+            <mat-label>Search through the listing titles and highlights</mat-label>
+            <input type="tel" #search matInput placeholder="i.e. Javascript, C#, etc." [value]="searchTerm" (keyup.enter)="onEnter(search.value)" >
+            <mat-icon matSuffix (click)="onEnter(search.value)" class="search-icon">search</mat-icon>
           </mat-form-field>
         </form>
         <div>
@@ -22,7 +28,7 @@
     <div class="row">
         <div *ngFor="let post of searchResults; let i=index" class="col-lg-6">
             <mat-card class="content-card mb-5" *ngIf="i < resultsPerPage">
-                <mat-card-header class="header-title bottom-line" (click)="getSpecificPost(post)" [routerLink]="['/post',i]">
+                <mat-card-header class="header-title bottom-line"  [routerLink]="['/post',post.RowKey,post.PartitionKey]">
                     <mat-card-title>{{post.title}}</mat-card-title>
                     <mat-card-subtitle >{{post.dateCreated}}</mat-card-subtitle>
                 </mat-card-header>
@@ -43,10 +49,13 @@
                         </div>
                     </div>
                 </mat-card-content>
-                <button class="btn btn-theme-inverted" (click)="getSpecificPost(post)" [routerLink]="['/post',i]">
+                <button class="btn btn-theme-inverted" [routerLink]="['/post',post.RowKey,post.PartitionKey]">
                     Read more
                 </button>
             </mat-card>
+        </div>
+        <div *ngIf="searchResults.length < 1" class="center">
+            <h2>No posts found with the given search terms.</h2>
         </div>
     </div>
     <!-- Search Results End-->

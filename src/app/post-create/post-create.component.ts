@@ -10,6 +10,7 @@ import {Post} from "../../models/Post";
 import {Category} from "../../models/enums/Category";
 import {AuthService} from "../../services/auth.service";
 import {Company} from "../../models/Company";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-post-create',
@@ -36,7 +37,8 @@ export class PostCreateComponent implements OnInit {
   };
 
   constructor(private postService: PostService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private userService: UserService) {
     this.filteredHighlights = this.highlightControl.valueChanges.pipe(
       startWith(null),
       map((highlight: string | null) => (highlight ? this._filter(highlight) : this.allHighlights.slice())),
@@ -80,16 +82,16 @@ export class PostCreateComponent implements OnInit {
     return this.allHighlights.filter(highlight => highlight.toLowerCase().includes(filterValue));
   }
 
-  createNewPost(form: NgForm) {
+  async createNewPost(form: NgForm) {
     const title = form.value.title;
     const highlights = this.highlights;
     const froalaContent = this.froalaField;
-    const name = this.authService.user?.name!!;
-    const accountId = this.authService.user?.localAccountId!!;
+    const name = await this.userService.getUser(undefined).then(user => user?.displayName!!)
+    const accountId = this.authService.accountId!!;
     const accessToken = this.authService.accessToken;
 
     //TODO fix the Category, picture and image parameter.
-    const newPost = new Post(new Company("NO PICUTRE", Category.Healthcare, name, "description", "links", "email", "phone", "address"), title, froalaContent, "", highlights)
+    const newPost = new Post(new Company("emailAddress",  "NO PICUTRE", Category.Healthcare, name, "description", "links", "phone", "address"), title, froalaContent, "", highlights)
 
     this.postService.createPost(newPost,  accessToken, accountId);
 

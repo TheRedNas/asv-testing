@@ -1,0 +1,91 @@
+<div class="bg-theme-primary">
+  <div class="container large-separator-top separator">
+    <div class="row text-center">
+      <h1 class="signup-title">Signup</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container separator">
+  <div class="row">
+    <div class="signup">
+      <form [formGroup]="signupForm">
+        <mat-card class="card mb-5">
+          <mat-card-content>
+            <!-- Email address -->
+            <mat-form-field appearance="fill">
+              <mat-label>Email address</mat-label>
+              <input matInput name="emailAddress" formControlName="emailAddress" required>
+            </mat-form-field>
+
+            <label class="emailInUse" [hidden]="!emailInUse">This emailaddress is already in use.</label>
+
+            <!-- TODO: email verification -->
+
+            <!-- Password -->
+            <mat-form-field appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" name="password" formControlName="password" required>
+            </mat-form-field>
+
+            <!-- TODO: Password policy -->
+            <!-- Confirm password -->
+            <mat-form-field appearance="fill">
+              <mat-label>Confirm password</mat-label>
+              <input matInput type="password" name="confirmedPassword" formControlName="confirmedPassword" required>
+            </mat-form-field>
+
+            <!-- Account type -->
+            <mat-radio-group formControlName="isCompany">
+              <mat-radio-button [value]="true">Company</mat-radio-button>
+              <mat-radio-button [value]="false">Freelancer</mat-radio-button>
+            </mat-radio-group>
+            <br>
+
+            <!-- Company form -->
+            <form formGroupName="companyForm">
+              <!-- Company name -->
+              <mat-form-field appearance="fill" *ngIf="signupForm.controls.isCompany.value">
+                <mat-label>Company name</mat-label>
+                <input matInput name="companyName" formControlName="companyName"
+                       [required]="signupForm.controls.isCompany.value">
+              </mat-form-field>
+            </form>
+
+            <!-- Freelancer form -->
+            <form formGroupName="freelancerForm">
+              <!-- First name -->
+              <mat-form-field appearance="fill" *ngIf="!signupForm.controls.isCompany.value">
+                <mat-label>First name</mat-label>
+                <input matInput name="firstName" formControlName="firstName"
+                       [required]="!signupForm.controls.isCompany.value">
+              </mat-form-field>
+
+              <!-- Last name -->
+              <mat-form-field appearance="fill" *ngIf="!signupForm.controls.isCompany.value">
+                <mat-label>Last name</mat-label>
+                <input matInput name="lastName" formControlName="lastName"
+                       [required]="!signupForm.controls.isCompany.value">
+              </mat-form-field>
+
+              <!-- Job title -->
+              <mat-form-field appearance="fill" *ngIf="!signupForm.controls.isCompany.value">
+                <mat-label>Job title</mat-label>
+                <input matInput name="jobTitle" formControlName="jobTitle">
+              </mat-form-field>
+            </form>
+
+            <mat-form-field>
+              <mat-label>Category</mat-label>
+              <mat-select formControlName="category">
+                <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <button type="button" class="btn btn-warning" (click)="onSubmit()">Sign up</button>
+          </mat-card-content>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</div>

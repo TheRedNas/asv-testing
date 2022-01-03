@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Freelancer } from 'src/models/Freelancer';
 import { UserService } from 'src/services/user.service';
+import {User} from "../../models/User";
+import {Company} from "../../models/Company";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile-freelancer',
@@ -10,27 +13,17 @@ import { UserService } from 'src/services/user.service';
 export class ProfileFreelancerComponent implements OnInit {
   freelancer!: Freelancer;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.getUserFreelancer();
   }
 
   getUserFreelancer() {
-    this.userService.getUserFreelancer().subscribe(
-      (data: Freelancer) => {
-        this.freelancer = new Freelancer(data.picture,
-                                         this.userService.defineCategory(data.category),
-                                         data.givenName,
-                                         data.surname,
-                                         JSON.parse(data.links),
-                                         JSON.parse(data.skillset),
-                                         data.title,
-                                         data.email,
-                                         data.phone,
-                                         data.location,
-                                         data.country)
-      },
-    );
+    this.userService.getUser(undefined).then((user: User | undefined) => {
+      if (user === undefined) this.router.navigate(["home"]);
+      else if (user instanceof Company) this.router.navigate(["profile/c"]);
+      else this.freelancer = user as Freelancer;
+    });
   }
 }

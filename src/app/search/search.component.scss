@@ -50,7 +50,17 @@ h3 {
     color: #fff;
 }
 
+.center {
+    text-align: center;
+}
+
 
 mat-chip{
   display: inline-block;
+}
+.page-highlight {
+    // margin-left: -24px;
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+    color: #39a9db;
 }

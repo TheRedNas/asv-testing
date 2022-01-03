@@ -13,6 +13,8 @@ export class PostService implements CsudInterface {
 
   private readonly createPostURI = "https://func-freeboard-westeu-01.azurewebsites.net/api/CreatePostHttpTrigger?code=ov8hB894kGXPYJEh/lpVTYhUf2mUJHBVZCNg2YolpAFOgbKt67zeZA==";
   private readonly getPostsURI = "https://func-freeboard-westeu-01.azurewebsites.net/api/GetPostsHttpTrigger?code=j5gxigUIzRnDveJyZhcccBzrwOof0zI/OxrRUymzQZmtuffXRlfQxg==";
+  private readonly searchPostsURI = "https://func-freeboard-westeu-01.azurewebsites.net/api/SearchPostHttpTrigger?code=A4YlrQVP6JiX2VhyDfFuw3cE5DIBcurjyEFVoWlEUImO80UNaaijbA==";
+  private readonly getPostByIdURI = "https://func-freeboard-westeu-01.azurewebsites.net/api/GetPostHttpTrigger?code=I8umnZWAUIEcfsd4qGkHk48uIHassj8D7Vi8JV/7G1DXVObgau335A=="
   private _success: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   localhostURL = "http://localhost:7071/api/";
@@ -50,7 +52,35 @@ export class PostService implements CsudInterface {
     let appendix = '&';
     if (queryParams) appendix += this.serialize(queryParams)
     
-    return this.http.get<Post[]>(this.getPostsURI+appendix);
+    return this.http.get<Post[]>(this.getPostsURI+appendix)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  public searchPostsFromAzure(queryParams?: any): Observable<Post[]> {
+    let appendix = '&';
+    if (queryParams) appendix += this.serialize(queryParams)
+    
+    return  this.http.get<Post[]>(this.searchPostsURI+appendix)
+    .pipe(
+      retry(2),
+      catchError((err: HttpErrorResponse) => {
+        return this.getPostsFromAzure()
+      }),
+    );
+  }
+
+  public getPostByIdFromAzure(queryParams: any): Observable<Post> {
+    let appendix = '&';
+    if (queryParams) appendix += this.serialize(queryParams)
+    
+    return  this.http.get<Post>(this.getPostByIdURI+appendix)
+    .pipe(
+      retry(2),
+      catchError(this.handleError),
+    );
   }
 
   public createPost(post: Post, accessToken: string, accountId?: string,) {

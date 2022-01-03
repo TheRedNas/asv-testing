@@ -34,7 +34,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 // -----------    Material Imports    -----------
 //import { MatIconModule } from "@angular/material/icon";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -50,6 +50,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
+import { SignupComponent } from './signup/signup.component';
+import {MatRadioModule} from "@angular/material/radio";
 
 const materialModules = [
   MatIconModule,
@@ -93,6 +95,7 @@ const froala = [
     ProfileCompanyComponent,
     ProfileCompanyEditComponent,
     ProfileFreelancerEditComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,11 +119,12 @@ const froala = [
       {
         // MSAL interceptor configuration.
         // The protected resource mapping maps your web API with the corresponding app scopes. If your code needs to call another web API, add the URI mapping here.
-        interactionType: InteractionType.Redirect,
+        interactionType: InteractionType.Redirect, // MSAL Interceptor Configuration
         protectedResourceMap: new Map([
           [protectedResources.freeboardApi.endpoint, protectedResources.freeboardApi.scopes]
         ])
-      })
+      }),
+    MatRadioModule
   ],
   providers: [
     DatePipe,

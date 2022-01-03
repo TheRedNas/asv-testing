@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
+import {UserService} from "../../services/user.service";
+import {Company} from "../../models/Company";
+import {Freelancer} from "../../models/Freelancer";
 
 @Component({
   selector: 'app-navigation',
@@ -8,14 +11,13 @@ import {AuthService} from "../../services/auth.service";
 })
 export class NavigationComponent implements OnInit {
   loginDisplay = false;
+  freelancer = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
     // Subscribe to isLoggedIn to track if user is logged in or not.
-    this.authService.isLoggedIn.subscribe(isLoggedIn => {
-      this.loginDisplay = isLoggedIn;
-    });
+    this.authService.isLoggedIn.subscribe(isLoggedIn => this.loginDisplay = isLoggedIn);
   }
 
   /**

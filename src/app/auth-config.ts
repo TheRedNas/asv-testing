@@ -13,13 +13,13 @@ const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigato
  */
 export const b2cPolicies = {
   names: {
-    signUpSignIn: "B2C_1_susi",
+    signIn: "B2C_1_signin",
     editProfile: "B2C_1_edit_profile",
     resetPassword: "B2C_1_reset_password",
   },
   authorities: {
-    signUpSignIn: {
-      authority: "https://freeboardnl.b2clogin.com/freeboardnl.onmicrosoft.com/B2C_1_susi",
+    signIn: {
+      authority: "https://freeboardnl.b2clogin.com/freeboardnl.onmicrosoft.com/B2C_1_signin",
     },
     editProfile: {
       authority: "https://freeboardnl.b2clogin.com/freeboardnl.onmicrosoft.com/B2C_1_edit_profile",
@@ -28,7 +28,9 @@ export const b2cPolicies = {
       authority: "https://freeboardnl.b2clogin.com/freeboardnl.onmicrosoft.com/B2C_1_reset_password",
     }
   },
-  authorityDomain: "freeboardnl.b2clogin.com"
+  authorityDomain: "freeboardnl.b2clogin.com",
+  extensionPrefix: "extension_e3e3770b8d1645428529d235ba3dd302_",
+  issuer: "freeboardnl.onmicrosoft.com"
 };
 
 /**
@@ -37,7 +39,7 @@ export const b2cPolicies = {
 export const msalConfig: Configuration = {
   auth: {
     clientId: 'ae5d3645-1c7f-433d-8a0a-bc86db444db2',
-    authority: b2cPolicies.authorities.signUpSignIn.authority,
+    authority: b2cPolicies.authorities.signIn.authority,
     knownAuthorities: [b2cPolicies.authorityDomain],
     redirectUri: '/',
     postLogoutRedirectUri: '/',
@@ -55,6 +57,12 @@ export const msalConfig: Configuration = {
       piiLoggingEnabled: false
     }
   }
+}
+
+export const OAuthSettings = {
+  appId: "ae5d3645-1c7f-433d-8a0a-bc86db444db2",
+  redirectUri: "http://localhost:4200",
+  scopes: ["User.ReadWrite.All"]
 }
 
 /**

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Freelancer } from 'src/models/Freelancer';
 import { UserService } from 'src/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {User} from "../../models/User";
+import {Company} from "../../models/Company";
 
 @Component({
   selector: 'app-profile-freelancer-edit',
@@ -13,12 +15,16 @@ export class ProfileFreelancerEditComponent implements OnInit {
   freelancer!: Freelancer;
   snackbarDurationInSeconds = 5;
   maxSkillset = 8;
+  private templateLinks = "[{\"source\": \"twitter\",\"value\": \"twitterlinkhere\",\"icon\": \"bi-twitter\",\"active\": \"true\"}," +
+                        + "{\"source\": \"github\",\"value\": \"githublinkhere\",\"icon\": \"bi-github\",\"active\": \"false\"}," +
+                        + "{\"source\": \"instagram\",\"value\": \"instagramlinkhere\",\"icon\": \"bi-instagram\",\"active\": \"false\"}," +
+                        + "{\"source\": \"facebook\",\"value\": \"facebooklinkhere\",\"icon\": \"bi-facebook\",\"active\": \"false\"}," +
+                        + "{\"source\": \"website\",\"value\": \"websitelinkhere\",\"icon\": \"bi-globe\",\"active\": \"true\"}]";
 
   @ViewChild(('givenName'), {static: false}) givenName!: ElementRef;
   @ViewChild(('surname'), {static: false}) surname!: ElementRef;
   @ViewChild(('title'), {static: false}) title!: ElementRef;
-  @ViewChild(('location'), {static: false}) location!: ElementRef;
-  @ViewChild(('country'), {static: false}) country!: ElementRef;
+  @ViewChild(('address'), {static: false}) address!: ElementRef;
   @ViewChild(('email'), {static: false}) email!: ElementRef;
   @ViewChild(('phone'), {static: false}) phone!: ElementRef;
 
@@ -29,44 +35,41 @@ export class ProfileFreelancerEditComponent implements OnInit {
   }
 
   submitProfile() {
-    if(this.givenName == undefined || this.surname == undefined || this.title == undefined || 
-       this.location == undefined || this.country == undefined || this.email == undefined || this.phone == undefined) {
-        this._snackbar.open("Something went wrong, please try again", "close", {duration: this.snackbarDurationInSeconds * 1000});    
-    }
-    else {
-      const tempFreelancer = new Freelancer("../assets/logo/Logo-Pin.png",
-                                          this.userService.defineCategory(1),
-                                          this.givenName.nativeElement.value,
-                                          this.surname.nativeElement.value,
-                                          JSON.stringify(this.freelancer.links),
-                                          JSON.stringify(this.freelancer.skillset),
-                                          this.title.nativeElement.value,
-                                          this.email.nativeElement.value,
-                                          this.phone.nativeElement.value,
-                                          this.location.nativeElement.value,
-                                          this.country.nativeElement.value);
-    // Send object Freelancer to API here
-    this._snackbar.open("Changes saved", "close", {duration: this.snackbarDurationInSeconds * 1000});
-    // this.router.navigate(['/profile/f']);
+    if(this.givenName == undefined || this.surname == undefined || this.title == undefined ||
+       this.address == undefined || this.email == undefined || this.phone == undefined) {
+        this._snackbar.open("Something went wrong, please try again", "close", {duration: this.snackbarDurationInSeconds * 1000});
+    } else {
+      const editedFreelancer = new Freelancer(
+        this.email.nativeElement.value,
+        this.freelancer.profilePicture,
+        this.freelancer.category,
+        this.givenName.nativeElement.value,
+        this.surname.nativeElement.value,
+        this.title.nativeElement.value,
+        JSON.stringify(this.freelancer.links),
+        JSON.stringify(this.freelancer.skillset),
+        this.phone.nativeElement.value,
+        this.address.nativeElement.value,
+      );
+
+      this.userService.updateUser(editedFreelancer).then(successful => {
+        if (successful) {
+          this._snackbar.open("Changes saved", "close", {duration: this.snackbarDurationInSeconds * 1000});
+          this.router.navigate(["profile/f"]);
+        } else {
+          this._snackbar.open("Something went wrong, please try again", "close", {duration: this.snackbarDurationInSeconds * 1000});
+        }
+      });
     }
   }
 
   getUserFreelancer() {
-    this.userService.getUserFreelancer().subscribe(
-      (data: Freelancer) => {
-        this.freelancer = new Freelancer(data.picture,
-                                         this.userService.defineCategory(data.category),
-                                         data.givenName,
-                                         data.surname,
-                                         JSON.parse(data.links),
-                                         JSON.parse(data.skillset),
-                                         data.title,
-                                         data.email,
-                                         data.phone,
-                                         data.location,
-                                         data.country)
-      },
-    );
+    this.userService.getUser(undefined).then((user: User | undefined) => {
+      if (user === undefined) this.router.navigate(["home"]);
+      else if (user instanceof Company) this.router.navigate(["profile/c"]);
+      else this.freelancer = user as Freelancer;
+      if (this.freelancer.links == "") this.freelancer.links = this.templateLinks;
+    });
   }
 
   addSkillSet() {
