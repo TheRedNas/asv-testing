@@ -46,8 +46,6 @@ export class UserService {
       accountId = this.authService.accountId;
     }
 
-    console.log(accountId);
-
     try {
       // Get the user.
       let graphUser = await this.graphClient

@@ -6,6 +6,12 @@ import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
+import { MatCommonModule } from '@angular/material/core';
+import { PortalModule } from '@angular/cdk/portal'
+import { MaterialModule } from './app/material/material.module';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 declare const require: {
   context(path: string, deep?: boolean, filter?: RegExp): {
@@ -16,7 +22,15 @@ declare const require: {
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
-  BrowserDynamicTestingModule,
+  [
+    BrowserDynamicTestingModule,
+    MaterialModule,
+    PortalModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterTestingModule,
+    NoopAnimationsModule 
+  ],
   platformBrowserDynamicTesting(),
   { teardown: { destroyAfterEach: true }},
 );

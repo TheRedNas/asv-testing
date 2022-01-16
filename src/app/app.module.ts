@@ -51,7 +51,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import { SignupComponent } from './signup/signup.component';
-import {MatRadioModule} from "@angular/material/radio";
+import { MatRadioModule } from "@angular/material/radio";
+import { MaterialModule } from './material/material.module';
 
 const materialModules = [
   MatIconModule,
@@ -124,7 +125,8 @@ const froala = [
           [protectedResources.freeboardApi.endpoint, protectedResources.freeboardApi.scopes]
         ])
       }),
-    MatRadioModule
+    MatRadioModule,
+    MaterialModule
   ],
   providers: [
     DatePipe,

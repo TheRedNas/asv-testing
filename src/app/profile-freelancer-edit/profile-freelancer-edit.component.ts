@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { Freelancer } from 'src/models/Freelancer';
 import { UserService } from 'src/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {User} from "../../models/User";
-import {Company} from "../../models/Company";
+import { User } from "../../models/User";
+import { Company } from "../../models/Company";
 
 @Component({
   selector: 'app-profile-freelancer-edit',
@@ -15,11 +15,12 @@ export class ProfileFreelancerEditComponent implements OnInit {
   freelancer!: Freelancer;
   snackbarDurationInSeconds = 5;
   maxSkillset = 8;
-  private templateLinks = "[{\"source\": \"twitter\",\"value\": \"twitterlinkhere\",\"icon\": \"bi-twitter\",\"active\": \"true\"}," +
-                        + "{\"source\": \"github\",\"value\": \"githublinkhere\",\"icon\": \"bi-github\",\"active\": \"false\"}," +
-                        + "{\"source\": \"instagram\",\"value\": \"instagramlinkhere\",\"icon\": \"bi-instagram\",\"active\": \"false\"}," +
-                        + "{\"source\": \"facebook\",\"value\": \"facebooklinkhere\",\"icon\": \"bi-facebook\",\"active\": \"false\"}," +
-                        + "{\"source\": \"website\",\"value\": \"websitelinkhere\",\"icon\": \"bi-globe\",\"active\": \"true\"}]";
+  // private templateLinks = "[{\"source\": \"twitter\",\"value\": \"twitterlinkhere\",\"icon\": \"bi-twitter\",\"active\": \"true\"}" +
+                        // + "{\"source\": \"github\",\"value\": \"githublinkhere\",\"icon\": \"bi-github\",\"active\": \"false\"}," +
+                        // + "{\"source\": \"instagram\",\"value\": \"instagramlinkhere\",\"icon\": \"bi-instagram\",\"active\": \"false\"}," +
+                        // + "{\"source\": \"facebook\",\"value\": \"facebooklinkhere\",\"icon\": \"bi-facebook\",\"active\": \"false\"}," +
+                        // + "{\"source\": \"website\",\"value\": \"websitelinkhere\",\"icon\": \"bi-globe\",\"active\": \"true\"}]";
+  private templateLinks = "[{\"source\": \"twitter\",\"value\": \"twitterlinkhere\",\"icon\": \"bi-twitter\",\"active\": \"true\"}]"
 
   @ViewChild(('givenName'), {static: false}) givenName!: ElementRef;
   @ViewChild(('surname'), {static: false}) surname!: ElementRef;
@@ -35,8 +36,9 @@ export class ProfileFreelancerEditComponent implements OnInit {
   }
 
   submitProfile() {
-    if(this.givenName == undefined || this.surname == undefined || this.title == undefined ||
-       this.address == undefined || this.email == undefined || this.phone == undefined) {
+    if(this.givenName.nativeElement.value == undefined || this.surname.nativeElement.value == undefined ||
+      this.title.nativeElement.value == undefined || this.address.nativeElement.value == undefined ||
+      this.email.nativeElement.value == undefined || this.phone.nativeElement.value == undefined) {
         this._snackbar.open("Something went wrong, please try again", "close", {duration: this.snackbarDurationInSeconds * 1000});
     } else {
       const editedFreelancer = new Freelancer(
@@ -68,7 +70,9 @@ export class ProfileFreelancerEditComponent implements OnInit {
       if (user === undefined) this.router.navigate(["home"]);
       else if (user instanceof Company) this.router.navigate(["profile/c"]);
       else this.freelancer = user as Freelancer;
-      if (this.freelancer.links == "") this.freelancer.links = this.templateLinks;
+
+      if (!(this.freelancer.links instanceof Array) || this.freelancer.links.length === 0)
+        this.freelancer.links = JSON.parse(this.templateLinks);
     });
   }
 

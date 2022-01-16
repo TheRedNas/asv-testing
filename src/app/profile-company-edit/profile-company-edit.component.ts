@@ -37,7 +37,7 @@ export class ProfileCompanyEditComponent implements OnInit {
 
   submitProfile() {
     if(this.name == undefined || this.description == undefined || this.email == undefined ||
-       this.phone == undefined || this.address == undefined) {
+        this.phone == undefined || this.address == undefined) {
         this._snackbar.open("Something went wrong, please try again", "close", {duration: this.snackbarDurationInSeconds * 1000});
     } else {
       const editedCompany = new Company(

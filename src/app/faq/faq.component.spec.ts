@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatAccordion, MatExpansionPanel, MatExpansionPanelTitle } from '@angular/material/expansion';
 
 import { FaqComponent } from './faq.component';
 
@@ -8,7 +9,7 @@ describe('FaqComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FaqComponent ]
+      declarations: [ FaqComponent, MatAccordion, MatExpansionPanel, MatExpansionPanelTitle ]
     })
     .compileComponents();
   });
