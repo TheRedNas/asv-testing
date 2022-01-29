@@ -44,7 +44,7 @@ module.exports = function(config) {
  
     ngHtml2JsPreprocessor: {
       stripPrefix: conf.paths.src + '/',
-      moduleName: 'TODO_PUT_HERE_YOUR_MODULE_NAME'
+      moduleName: 'angular'
     },
  
     logLevel: 'WARN',
