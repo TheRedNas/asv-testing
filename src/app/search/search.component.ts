@@ -38,7 +38,7 @@ export class SearchComponent implements OnInit {
         (data: any) => {
           this.searchResults.length = 0;
           data.Results.forEach((obj: any) => {
-              this.searchResults.push(new Post(obj._user,obj._title,obj._content,obj._image,obj._highlights,obj.RowKey,obj.PartitionKey,obj.Timestamp))
+              this.searchResults.push(new Post(obj._user,obj._title,obj._content,obj._image,obj._highlights,obj.RowKey))
             });
         }
       )

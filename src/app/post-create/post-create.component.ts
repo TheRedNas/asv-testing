@@ -1,5 +1,5 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FormControl, NgForm} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
@@ -17,7 +17,7 @@ import {UserService} from "../../services/user.service";
   templateUrl: './post-create.component.html',
   styleUrls: ['./post-create.component.scss']
 })
-export class PostCreateComponent implements OnInit {
+export class PostCreateComponent {
 
   selectable = true;
   removable = true;
@@ -43,9 +43,6 @@ export class PostCreateComponent implements OnInit {
       startWith(null),
       map((highlight: string | null) => (highlight ? this._filter(highlight) : this.allHighlights.slice())),
     );
-  }
-
-  ngOnInit(): void {
   }
 
   add(event: MatChipInputEvent): void {
@@ -90,7 +87,6 @@ export class PostCreateComponent implements OnInit {
     const accountId = this.authService.accountId!!;
     const accessToken = this.authService.accessToken;
 
-    //TODO fix the Category, picture and image parameter.
     const newPost = new Post(new Company("emailAddress",  "NO PICUTRE", Category.Healthcare, name, "description", "links", "phone", "address"), title, froalaContent, "", highlights)
 
     this.postService.createPost(newPost,  accessToken, accountId);

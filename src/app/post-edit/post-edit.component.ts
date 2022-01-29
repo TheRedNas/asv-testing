@@ -1,5 +1,5 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
@@ -11,7 +11,7 @@ import { map, startWith } from 'rxjs/operators';
   templateUrl: './post-edit.component.html',
   styleUrls: ['./post-edit.component.scss']
 })
-export class PostEditComponent implements OnInit {
+export class PostEditComponent {
 
   selectable = true;
   removable = true;
@@ -33,9 +33,6 @@ export class PostEditComponent implements OnInit {
       startWith(null),
       map((highlight: string | null) => (highlight ? this._filter(highlight) : this.allHighlights.slice())),
     );
-  }
-
-  ngOnInit(): void {
   }
 
   add(event: MatChipInputEvent): void {

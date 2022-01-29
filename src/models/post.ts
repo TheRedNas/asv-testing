@@ -14,14 +14,14 @@ export class Post implements TableEntity {
   RowKey: string = "";
   Timestamp: Date = new Date();
 
-  constructor(user: Company, title: string, content: string, image: string, highlights: string[], RowKey: string = "", PartitionKey: string = "", Timestamp: Date = new Date()) {
+  constructor(user: Company, title: string, content: string, image: string, highlights: string[], Timestamp: Date = new Date()) {
     this._user = user;
     this._title = title;
     this._content = content;
     this._image = image;
     this._highlights = highlights;
-    this.RowKey = RowKey;
-    this.PartitionKey = PartitionKey;
+    this.RowKey = "";
+    this.PartitionKey = "";
     this.Timestamp = Timestamp;
   }
 

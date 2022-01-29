@@ -42,7 +42,7 @@ export class PostComponent implements OnInit {
     }
     this.postService.getPostByIdFromAzure(params).subscribe(
       (data: any) => {
-        this.post = (new Post(data._user,data._title,data._content,data._image,data._highlights,data.RowKey,data.PartitionKey,data.Timestamp))
+        this.post = (new Post(data._user,data._title,data._content,data._image,data._highlights,data.RowKey))
         this.GetUserCompany(data.PartitionKey);
       },
       (error: any) => {
