@@ -110,12 +110,10 @@ export class PostService implements CsudInterface {
     return str.join("&");
   }
 
-  //TODO adjust this to be correct later when needed.
   public getPost(rowKey: string, partitionKey: string): Observable<Post[]> {
     return this.http.get<Post[]>(this.localhostURL + 'GetPostHttpTrigger');
   }
 
-  //TODO adjust this to be correct later when needed.
   public getPostbyUser(accountId: string): Observable<Post> {
     return this.http.get<Post>(`${this.localhostURL}GetPostsByUserHttpTrigger?accountId=${accountId}`);
   }
