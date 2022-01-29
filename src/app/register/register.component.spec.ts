@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Category } from 'src/models/category-enum';
+import { Freelancer } from 'src/models/Freelancer';
 
 import { RegisterComponent } from './register.component';
 
@@ -21,5 +23,13 @@ describe('RegisterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create user', () => {
+    const id = "TestUserGenerated";
+    const user = new Freelancer(id, "", Category.IT, "", "", "", "", "", "", "");
+    const component = TestBed.createComponent(RegisterComponent).componentInstance;
+
+    expect(component.createNewFreelancer(user)).toBeTruthy();
   });
 });
