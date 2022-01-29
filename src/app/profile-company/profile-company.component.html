@@ -17,7 +17,7 @@
                     <div class="card mt-3" *ngIf="company.links.length > 0">
                         <div class="list-group list-group-flush" *ngFor="let link of company.links">
                             <div class="list-group-item d-flex justify-content-between align-items-center flex-wrap" *ngIf="link.active == 'true'">
-                                <h6 class="mb-0"><i class="bi {{link.icon}} icon-link"></i>&nbsp;{{link.source}}</h6>
+                                <h6 class="mb-0"><em class="bi {{link.icon}} icon-link"></em>&nbsp;{{link.source}}</h6>
                                 <span class="text-secondary">{{link.value}}</span>
                             </div>
                         </div>

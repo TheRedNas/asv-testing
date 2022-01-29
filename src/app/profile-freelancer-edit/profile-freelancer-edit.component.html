@@ -29,7 +29,7 @@
                                 *ngFor="let link of freelancer.links">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <i class="bi {{link.icon}} icon-link"></i>&nbsp;
+                                        <em class="bi {{link.icon}} icon-link"></em>&nbsp;
                                         <mat-slide-toggle class="example-margin" [checked]="link.active">
                                         </mat-slide-toggle>
                                     </div>
@@ -123,8 +123,7 @@
                             <div class="card h-100">
                                 <div class="card-body" *ngIf="freelancer.links.length > 0">
                                     <div class="row">
-                                        <h6 class="d-flex align-items-center mb-3"><i
-                                                class="bi bi-award-fill skill-icon"></i>&nbsp;Skill set</h6>
+                                        <h6 class="d-flex align-items-center mb-3"><em class="bi bi-award-fill skill-icon"></em>&nbsp;Skill set</h6>
                                     </div>
                                     <div *ngFor="let skill of freelancer.skillset; let index = index">
                                         <mat-form-field class="full-width-field col-sm-12" appearance="fill">
@@ -143,8 +142,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <button mat-button class="btn-add-skill col-sm-12"
-                                                (click)="addSkillSet()"><i
-                                                    class="bi bi-plus-circle icon-add-skill"></i></button>
+                                                (click)="addSkillSet()"><em class="bi bi-plus-circle icon-add-skill"></em></button>
                                         </div>
                                     </div>
                                 </div>
