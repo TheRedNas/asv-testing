@@ -111,7 +111,6 @@ export class SignupComponent implements OnInit {
       "creationType": "LocalAccount",
       "displayName": displayName,
       "mail": this.signupForm.controls.emailAddress?.value,
-      "passwordPolicies": "DisablePasswordExpiration",
       "identities": [
         {
           "signInType": "emailAddress",

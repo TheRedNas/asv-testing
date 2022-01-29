@@ -48,7 +48,7 @@ export class SearchComponent implements OnInit {
   }
 
   getContent(content: string) {
-    return this.sanitizer.bypassSecurityTrustHtml(content)
+    return content
   }
 
   onEnter(value: string) { 

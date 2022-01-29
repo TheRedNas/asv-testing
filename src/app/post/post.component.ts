@@ -53,7 +53,7 @@ export class PostComponent implements OnInit {
   }
 
   getContent(content: string = "") {
-    return this.sanitizer.bypassSecurityTrustHtml(content)
+    return content
   }
 
   GetUserCompany(accountId: string) {
