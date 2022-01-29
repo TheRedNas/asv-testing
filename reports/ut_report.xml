@@ -1,0 +1,62 @@
+<testExecutions version="1">
+  <file path="src/app/post/post.component.spec.ts">
+    <testCase name="PostComponent should create" duration="68"/>
+  </file>
+  <file path="src/app/profile-company-edit/profile-company-edit.component.spec.ts">
+    <testCase name="ProfileCompanyEditComponent should create" duration="22"/>
+  </file>
+  <file path="src/app/register/register.component.spec.ts">
+    <testCase name="RegisterComponent should create user" duration="7"/>
+    <testCase name="RegisterComponent should create" duration="3"/>
+  </file>
+  <file path="src/app/profile-freelancer-edit/profile-freelancer-edit.component.spec.ts">
+    <testCase name="ProfileFreelancerEditComponent should create" duration="17"/>
+  </file>
+  <file path="src/app/profile/profile.component.spec.ts">
+    <testCase name="ProfileComponent should create" duration="11"/>
+  </file>
+  <file path="src/app/footer/footer.component.spec.ts">
+    <testCase name="FooterComponent should create" duration="13"/>
+  </file>
+  <file path="src/app/profile-company/profile-company.component.spec.ts">
+    <testCase name="ProfileCompanyComponent should create" duration="11"/>
+  </file>
+  <file path="src/app/app.component.spec.ts">
+    <testCase name="AppComponent should have as title 'Freeboard'" duration="7"/>
+    <testCase name="AppComponent should create the app" duration="4"/>
+  </file>
+  <file path="src/app/faq/faq.component.spec.ts">
+    <testCase name="FaqComponent should create" duration="23"/>
+  </file>
+  <file path="src/app/navigation/navigation.component.spec.ts">
+    <testCase name="NavigationComponent should create" duration="11"/>
+  </file>
+  <file path="src/app/search/search.component.spec.ts">
+    <testCase name="ProfileFreelancerComponent should create" duration="18"/>
+    <testCase name="ProfileFreelancerComponent should search" duration="7"/>
+  </file>
+  <file path="src/app/post-edit/post-edit.component.spec.ts">
+    <testCase name="PostEditComponent should create" duration="4"/>
+  </file>
+  <file path="src/app/post-create/post-create.component.spec.ts">
+    <testCase name="PostCreateComponent should create" duration="19"/>
+  </file>
+  <file path="src/app/page-not-found-component/page-not-found-component.component.spec.ts">
+    <testCase name="PageNotFoundComponentComponent should create" duration="7"/>
+  </file>
+  <file path="src/app/home/home.component.spec.ts">
+    <testCase name="HomeComponent should create" duration="8"/>
+  </file>
+  <file path="src/app/search/search.component.spec.ts">
+    <testCase name="ProfileFreelancerComponent should create" duration="10"/>
+  </file>
+  <file path="src/app/login/login.component.spec.ts">
+    <testCase name="LoginComponent should create" duration="3"/>
+  </file>
+  <file path="src/app/signup/signup.component.spec.ts">
+    <testCase name="SignupComponent should create" duration="24"/>
+  </file>
+  <file path="src/app/about/about.component.spec.ts">
+    <testCase name="AboutComponent should create" duration="11"/>
+  </file>
+</testExecutions>
