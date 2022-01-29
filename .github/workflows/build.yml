@@ -20,4 +20,3 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - script: 
               npx ng test --code-coverage --progress --karma-config src/karma-ci.conf.js --prod
-            displayName: Generate unit tests and report coverage
