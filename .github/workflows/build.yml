@@ -18,8 +18,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      - task: Npm@1
-            inputs:
-              command: custom
-              customCommand: run test:ci
-            displayName: Launch unit tests
+      - script: |
+              npx ng test --code-coverage --progress --karma-config src/karma-ci.conf.js --prod
+            displayName: Generate unit tests and report coverage
