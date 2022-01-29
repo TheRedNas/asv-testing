@@ -2,18 +2,18 @@
     <div class="d-flex flex-wrap justify-content-center justify-content-lg-start">
 
         <a [routerLink]="['/']" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none logo">
-            <emmg src="../../assets/logo/Logo-PureWhite.png" alt="Freeboard Logo">
+            <img src="../../assets/logo/Logo-PureWhite.png" alt="Freeboard Logo">
         </a>
         <nav class="col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <ul class="nav">
-                <lem><a [routerLink]="['/home']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Home</a></lem>
-                <lem><a [routerLink]="['/search']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Find Jobs</a></lem>
+                <li><a [routerLink]="['/home']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Home</a></li>
+                <li><a [routerLink]="['/search']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Find Jobs</a></li>
                 
-                <li *ngIf="!freelancer"><a [routerLink]="['/post/create']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Create a Jobpost</a></lem>
+                <li *ngIf="!freelancer"><a [routerLink]="['/post/create']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Create a Jobpost</a></li>
 
-                <lem><a [routerLink]="['/about']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">About</a></lem>
-                <lem><a [routerLink]="['/faq']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">F.A.Q.</a></lem>
-                <lem><a [routerLink]="['/profile/c/']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Profile</a></lem>
+                <li><a [routerLink]="['/about']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">About</a></li>
+                <li><a [routerLink]="['/faq']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">F.A.Q.</a></li>
+                <li><a [routerLink]="['/profile/c/']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Profile</a></li>
             </ul>
         </nav>
 

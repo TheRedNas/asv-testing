@@ -6,7 +6,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <emmg src="{{freelancer.profilePicture}}" alt="Admin" class="rounded-circle" width="150">
+                                <img src="{{freelancer.profilePicture}}" alt="Admin" class="rounded-circle" width="150">
                                 <div class="mt-3">
                                     <h4>{{freelancer.givenName}}&nbsp;{{freelancer.surname}}</h4>
                                     <p class="text-secondary mb-1">{{freelancer.jobTitle}}</p>
@@ -19,7 +19,7 @@
                     <div class="card mt-3" *ngIf="freelancer.links.length > 0">
                         <div class="list-group list-group-flush" *ngFor="let link of freelancer.links">
                             <div class="list-group-item d-flex justify-content-between align-items-center flex-wrap" *ngIf="link.active == 'true'">
-                                <h6 class="mb-0"><em class="bi {{link.icon}} icon-link"></em>&nbsp;{{link.source}}</h6>
+                                <h6 class="mb-0"><i class="bi {{link.icon}} icon-link"></i>&nbsp;{{link.source}}</h6>
                                 <span class="text-secondary">{{link.value}}</span>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                             <div class="card h-100">
                                 <div class="card-body" *ngIf="freelancer.links.length > 0">
                                     <h6 class="d-flex align-items-center mb-3">
-                                        <em class="bi bi-award-fill skill-icon"></em>&nbsp;Skill set
+                                        <i class="bi bi-award-fill skill-icon"></i>&nbsp;Skill set
                                     </h6>
                                     <div *ngFor="let skill of freelancer.skillset">
                                         <small>{{skill.skill}}</small>

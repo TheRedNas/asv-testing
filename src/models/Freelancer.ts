@@ -1,4 +1,4 @@
-import {User} from "./User";
+import {User} from "./user";
 import {Category} from "./enums/Category";
 
 export class Freelancer extends User {

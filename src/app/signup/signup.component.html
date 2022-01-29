@@ -15,7 +15,7 @@
             <!-- Email address -->
             <mat-form-field appearance="fill">
               <mat-label>Email address</mat-label>
-              <emnput matInput name="emailAddress" formControlName="emailAddress" required>
+              <input matInput name="emailAddress" formControlName="emailAddress" required>
             </mat-form-field>
 
             <label class="emailInUse" [hidden]="!emailInUse">This emailaddress is already in use.</label>
@@ -23,13 +23,14 @@
             <!-- Password -->
             <mat-form-field appearance="fill">
               <mat-label>Password</mat-label>
-              <emnput matInput type="password" name="password" formControlName="password" required>
+              <input matInput type="password" name="password" formControlName="password" required>
             </mat-form-field>
 
+            <!-- TODO: Password policy -->
             <!-- Confirm password -->
             <mat-form-field appearance="fill">
               <mat-label>Confirm password</mat-label>
-              <emnput matInput type="password" name="confirmedPassword" formControlName="confirmedPassword" required>
+              <input matInput type="password" name="confirmedPassword" formControlName="confirmedPassword" required>
             </mat-form-field>
 
             <!-- Account type -->
@@ -44,7 +45,7 @@
               <!-- Company name -->
               <mat-form-field appearance="fill" *ngIf="signupForm.controls.isCompany.value">
                 <mat-label>Company name</mat-label>
-                <emnput matInput name="companyName" formControlName="companyName"
+                <input matInput name="companyName" formControlName="companyName"
                        [required]="signupForm.controls.isCompany.value">
               </mat-form-field>
             </form>
@@ -54,21 +55,21 @@
               <!-- First name -->
               <mat-form-field appearance="fill" *ngIf="!signupForm.controls.isCompany.value">
                 <mat-label>First name</mat-label>
-                <emnput matInput name="firstName" formControlName="firstName"
+                <input matInput name="firstName" formControlName="firstName"
                        [required]="!signupForm.controls.isCompany.value">
               </mat-form-field>
 
               <!-- Last name -->
               <mat-form-field appearance="fill" *ngIf="!signupForm.controls.isCompany.value">
                 <mat-label>Last name</mat-label>
-                <emnput matInput name="lastName" formControlName="lastName"
+                <input matInput name="lastName" formControlName="lastName"
                        [required]="!signupForm.controls.isCompany.value">
               </mat-form-field>
 
               <!-- Job title -->
               <mat-form-field appearance="fill" *ngIf="!signupForm.controls.isCompany.value">
                 <mat-label>Job title</mat-label>
-                <emnput matInput name="jobTitle" formControlName="jobTitle">
+                <input matInput name="jobTitle" formControlName="jobTitle">
               </mat-form-field>
             </form>
 

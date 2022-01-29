@@ -2,7 +2,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Injectable, OnInit} from '@angular/core';
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {catchError, map, retry} from 'rxjs/operators';
-import {Post} from 'src/models/Post';
+import {Post} from 'src/models/post';
 import {CsudInterface} from "../models/interfaces/CsudInterface";
 import {Company} from "../models/Company";
 

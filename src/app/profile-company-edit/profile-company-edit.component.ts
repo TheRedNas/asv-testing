@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Company } from 'src/models/Company';
 import { UserService } from 'src/services/user.service';
-import {User} from "../../models/User";
+import {User} from "../../models/user";
 import {Freelancer} from "../../models/Freelancer";
 
 @Component({

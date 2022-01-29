@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Post } from "../../models/post";
+import { Post } from "src/models/post";
 import { PostService } from "../../services/post.service";
-import { DomSanitizer } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-search',
@@ -15,8 +14,7 @@ export class SearchComponent implements OnInit {
   filters: Object = {}
   searchTerm: string = ''
 
-  constructor(private postService: PostService,
-              private sanitizer: DomSanitizer) {
+  constructor(private postService: PostService) {
   }
 
   ngOnInit(): void {
