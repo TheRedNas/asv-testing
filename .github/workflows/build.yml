@@ -18,12 +18,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-<<<<<<< HEAD
       - task: Npm@1
             inputs:
               command: custom
               customCommand: run test:ci
             displayName: Launch unit tests
-=======
-  
->>>>>>> 26e626429f5c98a96bf80075b092ed4136bd6ea4
