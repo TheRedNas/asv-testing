@@ -8,9 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class FaqComponent implements OnInit {
 
   faqItems: Array<any> = []
-
-  constructor() { }
-
+  
   ngOnInit(): void {
     this.showFaqItems();
   }
