@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Post} from "../../models/post";
 import { DomSanitizer } from '@angular/platform-browser';
 import { PostService } from 'src/services/post.service';
 import { UserService } from 'src/services/user.service';
 import { Company } from 'src/models/Company';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Post } from 'src/models/post';
 
 @Component({
   selector: 'app-post',

@@ -34,43 +34,13 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 // -----------    Material Imports    -----------
 //import { MatIconModule } from "@angular/material/icon";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatButtonModule } from "@angular/material/button";
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatIconModule } from "@angular/material/icon";
-import { MatChipsModule } from '@angular/material/chips';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select'
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatSliderModule } from '@angular/material/slider';
+import { FormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { MatRadioModule } from "@angular/material/radio";
 import { MaterialModule } from './material/material.module';
 
 const materialModules = [
-  MatIconModule,
-  MatToolbarModule,
-  MatButtonModule,
-  MatExpansionModule,
-  MatCardModule,
-  MatInputModule,
-  MatProgressBarModule,
-  MatChipsModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatAutocompleteModule,
-  ReactiveFormsModule,
-  MatProgressSpinnerModule,
-  MatSnackBarModule,
-  MatSlideToggleModule,
-  MatSliderModule
+  MaterialModule
 ];
 
 const froala = [

@@ -6,7 +6,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {PostService} from "../../services/post.service";
-import {Post} from "../../models/Post";
+import {Post} from "../../models/post";
 import {Category} from "../../models/enums/Category";
 import {AuthService} from "../../services/auth.service";
 import {Company} from "../../models/Company";

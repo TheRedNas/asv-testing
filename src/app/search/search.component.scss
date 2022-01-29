@@ -8,13 +8,11 @@ h3 {
 }
 
 .overflow {
-    display: block;
+    display: block -webkit-box;
     text-overflow: ellipsis;
     overflow: hidden;
     max-height: 140px;
     word-break: keep-all;
-
-    display: -webkit-box;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
 }
