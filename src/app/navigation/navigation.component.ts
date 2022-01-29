@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {UserService} from "../../services/user.service";
-import {Company} from "../../models/Company";
-import {Freelancer} from "../../models/Freelancer";
 
 @Component({
   selector: 'app-navigation',

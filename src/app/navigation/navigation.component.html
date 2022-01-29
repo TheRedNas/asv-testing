@@ -9,7 +9,6 @@
                 <li><a [routerLink]="['/home']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Home</a></li>
                 <li><a [routerLink]="['/search']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Find Jobs</a></li>
                 
-                <!-- TODO: add limitation to prevent fraalancer from using -->
                 <li *ngIf="!freelancer"><a [routerLink]="['/post/create']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">Create a Jobpost</a></li>
 
                 <li><a [routerLink]="['/about']" routerLinkActive="active" class="nav-link px-2 text-theme px-4 ">About</a></li>

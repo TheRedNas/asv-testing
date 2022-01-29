@@ -1,12 +1,7 @@
-import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
-import {Post} from "../../models/Post";
-import {PostService} from "../../services/post.service";
-import {Observable} from "rxjs";
-import {SearchService} from "../../services/search.service";
-import { Company } from "src/models/Company";
-import {DomSanitizer} from '@angular/platform-browser'
-import { updateDefaultClause } from "typescript";
-import { ThisReceiver } from "@angular/compiler";
+import { Component, OnInit } from "@angular/core";
+import { Post } from "../../models/post";
+import { PostService } from "../../services/post.service";
+import { DomSanitizer } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-search',
@@ -21,7 +16,6 @@ export class SearchComponent implements OnInit {
   searchTerm: string = ''
 
   constructor(private postService: PostService,
-              private searchService: SearchService,
               private sanitizer: DomSanitizer) {
   }
 
@@ -43,18 +37,6 @@ export class SearchComponent implements OnInit {
     
       // searchterm found, using that in params to find posts that contain searchterm
       this.postService.searchPostsFromAzure(params).subscribe(
-        (data: any) => {
-          this.searchResults.length = 0;
-          data.Results.forEach((obj: any) => {
-              this.searchResults.push(new Post(obj._user,obj._title,obj._content,obj._image,obj._highlights,obj.RowKey,obj.PartitionKey,obj.Timestamp))
-            });
-        }
-      )
-    }
-    else {
-
-      // searchterm not found, using default to show first x amount of posts
-      this.postService.getPostsFromAzure(params).subscribe(
         (data: any) => {
           this.searchResults.length = 0;
           data.Results.forEach((obj: any) => {

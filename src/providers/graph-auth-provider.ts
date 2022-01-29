@@ -7,6 +7,6 @@ export class GraphAuthProvider implements AuthenticationProvider {
   constructor(private httpClient: HttpClient) { }
 
   async getAccessToken(authenticationProviderOptions: AuthenticationProviderOptions | undefined): Promise<string> {
-    return await this.httpClient.get<string>(this._graphApiTokenEndpoint).toPromise();
+    return this.httpClient.get<string>(this._graphApiTokenEndpoint).toPromise();
   }
 }

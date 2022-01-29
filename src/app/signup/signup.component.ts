@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
 })
 export class SignupComponent implements OnInit {
   public signupForm: FormGroup = new FormGroup({
-    isCompany: new FormControl(true, control => control.value as Boolean),
+    isCompany: new FormControl(true, control => control.value),
     emailAddress: new FormControl("", Validators.email),
     password: new FormControl("", Validators.nullValidator),
     confirmedPassword: new FormControl("", Validators.required),

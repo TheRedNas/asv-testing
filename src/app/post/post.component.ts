@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SearchService} from "../../services/search.service";
-import {Post} from "../../models/Post";
+import {Post} from "../../models/post";
 import { DomSanitizer } from '@angular/platform-browser';
 import { PostService } from 'src/services/post.service';
 import { UserService } from 'src/services/user.service';

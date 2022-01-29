@@ -1,6 +1,6 @@
 import {Inject, Injectable, OnDestroy} from '@angular/core';
 import {MSAL_GUARD_CONFIG, MsalBroadcastService, MsalGuardConfiguration, MsalService} from "@azure/msal-angular";
-import {AccountInfo, InteractionStatus, RedirectRequest} from "@azure/msal-browser";
+import {InteractionStatus, RedirectRequest} from "@azure/msal-browser";
 import {filter, takeUntil} from "rxjs/operators";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {b2cPolicies} from "../app/auth-config";

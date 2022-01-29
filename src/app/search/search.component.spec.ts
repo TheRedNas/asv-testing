@@ -3,7 +3,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MsalModule, MsalInterceptor, MSAL_INSTANCE, MSAL_GUARD_CONFIG, MSAL_INTERCEPTOR_CONFIG, MsalService, MsalGuard, MsalBroadcastService, MsalInterceptorConfiguration, MsalGuardConfiguration } from '@azure/msal-angular';
 import { IPublicClientApplication, PublicClientApplication, InteractionType } from '@azure/msal-browser';
-import { PostService } from 'src/services/post.service';
 import { msalConfig, protectedResources, loginRequest } from '../auth-config';
 
 import { SearchComponent } from './search.component';
@@ -11,14 +10,6 @@ import { SearchComponent } from './search.component';
 describe('ProfileFreelancerComponent', () => {
   let component: SearchComponent;
   let fixture: ComponentFixture<SearchComponent>;
-
-  const exampleResponse = {
-    searchResults: [
-        {name: 'test'},
-        {name : 'front-end'},
-        {name: 'back-end'}
-    ]
-    };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -55,10 +46,6 @@ describe('ProfileFreelancerComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-//   afterEach(() => {
-//     jasmine.Ajax.uninstall();
-//   });
 
   it('should create', () => {
     expect(component).toBeTruthy();

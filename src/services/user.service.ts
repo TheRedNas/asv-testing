@@ -8,7 +8,7 @@ import {AuthService} from "./auth.service";
 import {Client} from '@microsoft/microsoft-graph-client';
 import {GraphAuthProvider} from "../providers/graph-auth-provider";
 import {b2cPolicies} from "../app/auth-config";
-import {User} from "../models/User";
+import {User} from "../models/user";
 import {Freelancer} from "../models/Freelancer";
 
 @Injectable({
@@ -131,8 +131,7 @@ export class UserService {
 
       if (user instanceof Company) {
         // If the user is a company, create a company object.
-        let company = user as Company;
-        // TODO: change identity on email change.
+        let company = user;
         userObject = {
           "displayName": company.name,
           "mobilePhone": company.phone,

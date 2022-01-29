@@ -2,11 +2,7 @@
 
 import 'zone.js/testing';
 import { getTestBed } from '@angular/core/testing';
-import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting
-} from '@angular/platform-browser-dynamic/testing';
-import { MatCommonModule } from '@angular/material/core';
+import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { PortalModule } from '@angular/cdk/portal'
 import { MaterialModule } from './app/material/material.module';
 import { RouterTestingModule } from '@angular/router/testing';
