@@ -67,7 +67,6 @@ export const OAuthSettings = {
 
 /**
  * The endpoint and scopes for the backend.
- * TODO: add Functions endpoint
  */
 export const protectedResources = {
   freeboardApi: {
