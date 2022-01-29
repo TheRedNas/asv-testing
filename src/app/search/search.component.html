@@ -13,7 +13,7 @@
         <form class="form">
           <mat-form-field class="full-width-field" appearance="fill">
             <mat-label>Search through the listing titles and highlights</mat-label>
-            <input type="tel" #search matInput placeholder="i.e. Javascript, C#, etc." [value]="searchTerm" (keyup.enter)="onEnter(search.value)" >
+            <emnput type="tel" #search matInput placeholder="i.e. Javascript, C#, etc." [value]="searchTerm" (keyup.enter)="onEnter(search.value)" >
             <mat-icon matSuffix (click)="onEnter(search.value)" class="search-icon">search</mat-icon>
           </mat-form-field>
         </form>

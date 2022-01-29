@@ -6,7 +6,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="{{freelancer.profilePicture}}" alt="Admin" class="rounded-circle" width="150">
+                                <emmg src="{{freelancer.profilePicture}}" alt="Admin" class="rounded-circle" width="150">
                                 <div class="mt-3">
                                     <h4>{{freelancer.givenName}}&nbsp;{{freelancer.surname}}</h4>
                                     <p class="text-secondary mb-1">{{freelancer.jobTitle}}</p>
@@ -29,44 +29,44 @@
                                 *ngFor="let link of freelancer.links">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <i class="bi {{link.icon}} icon-link"></i>&nbsp;
+                                        <em class="bi {{link.icon}} icon-link"></em>&nbsp;
                                         <mat-slide-toggle class="example-margin" [checked]="link.active">
                                         </mat-slide-toggle>
                                     </div>
                                     <div class="col-sm-8" *ngIf="link.source == 'twitter'">
                                         <div class="input-group mr-auto">
                                             <span class="input-group-text" id="basic-addon1">@</span>
-                                            <input type="text" class="form-control" value="{{link.value}}"
+                                            <emnput type="text" class="form-control" value="{{link.value}}"
                                                 placeholder="Username">
                                         </div>
                                     </div>
                                     <div class="col-sm-8" *ngIf="link.source == 'github'">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" value="{{link.value}}"
+                                            <emnput type="text" class="form-control" value="{{link.value}}"
                                                 placeholder="freeboard">
                                         </div>
                                     </div>
                                     <div class="col-sm-8" *ngIf="link.source == 'instagram'">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" value="{{link.value}}"
+                                            <emnput type="text" class="form-control" value="{{link.value}}"
                                                 placeholder="freeboard">
                                         </div>
                                     </div>
                                     <div class="col-sm-8" *ngIf="link.source == 'facebook'">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" value="{{link.value}}"
+                                            <emnput type="text" class="form-control" value="{{link.value}}"
                                                 placeholder="freeboard">
                                         </div>
                                     </div>
                                     <div class="col-sm-8" *ngIf="link.source == 'website'">
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1">https://</span>
-                                            <input type="text" class="form-control" value="{{link.value}}"
+                                            <emnput type="text" class="form-control" value="{{link.value}}"
                                                 placeholder="freeboard">
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </lem>
                         </ul>
                     </div>
                 </div>
@@ -76,42 +76,42 @@
                             <div class="row">
                                 <mat-form-field class="full-width-field col-sm-12" appearance="fill">
                                     <mat-label>First name</mat-label>
-                                    <input type="tel" #givenName matInput placeholder="I.e. Rick"
+                                    <emnput type="tel" #givenName matInput placeholder="I.e. Rick"
                                         [value]="freelancer.givenName">
                                 </mat-form-field>
                             </div>
                             <div class="row">
                                 <mat-form-field class="full-width-field col-sm-12" appearance="fill">
                                     <mat-label>Last name</mat-label>
-                                    <input type="tel" #surname matInput placeholder="I.e. Gentlemen"
+                                    <emnput type="tel" #surname matInput placeholder="I.e. Gentlemen"
                                         [value]="freelancer.surname">
                                 </mat-form-field>
                             </div>
                             <div class="row">
                                 <mat-form-field class="full-width-field col-sm-12" appearance="fill">
                                     <mat-label>Title</mat-label>
-                                    <input type="tel" #title matInput placeholder="I.e. Developer"
+                                    <emnput type="tel" #title matInput placeholder="I.e. Developer"
                                         [value]="freelancer.jobTitle">
                                 </mat-form-field>
                             </div>
                             <div class="row">
                                 <mat-form-field class="full-width-field col-sm-12" appearance="fill">
                                     <mat-label>Address</mat-label>
-                                    <input type="tel" #address matInput placeholder="I.e. Amsterdam"
+                                    <emnput type="tel" #address matInput placeholder="I.e. Amsterdam"
                                         [value]="freelancer.address">
                                 </mat-form-field>
                             </div>
                             <div class="row">
                                 <mat-form-field class="full-width-field col-sm-12" appearance="fill">
                                     <mat-label>Email</mat-label>
-                                    <input type="tel" #email matInput placeholder="I.e. your@email.com"
+                                    <emnput type="tel" #email matInput placeholder="I.e. your@email.com"
                                         [value]="freelancer.emailAddress">
                                 </mat-form-field>
                             </div>
                             <div class="row">
                                 <mat-form-field class="full-width-field col-sm-12" appearance="fill">
                                     <mat-label>Phone</mat-label>
-                                    <input type="tel" #phone matInput placeholder="I.e. (06) 12345678"
+                                    <emnput type="tel" #phone matInput placeholder="I.e. (06) 12345678"
                                         [value]="freelancer.phone">
                                 </mat-form-field>
                             </div>
@@ -123,13 +123,13 @@
                             <div class="card h-100">
                                 <div class="card-body" *ngIf="freelancer.links.length > 0">
                                     <div class="row">
-                                        <h6 class="d-flex align-items-center mb-3"><i
-                                                class="bi bi-award-fill skill-icon"></i>&nbsp;Skill set</h6>
+                                        <h6 class="d-flex align-items-center mb-3"><em
+                                                class="bi bi-award-fill skill-icon"></em>&nbsp;Skill set</h6>
                                     </div>
                                     <div *ngFor="let skill of freelancer.skillset; let index = index">
                                         <mat-form-field class="full-width-field col-sm-12" appearance="fill">
                                             <mat-label>Title</mat-label>
-                                            <input type="tel" #skill{{index}} matInput placeholder="I.e. JavaScript"
+                                            <emnput type="tel" #skill{{index}} matInput placeholder="I.e. JavaScript"
                                                 [value]="skill.skill">
                                             <button matSuffix mat-icon-button aria-label="Clear"
                                                 (click)="removeSkillset(index)">
@@ -143,8 +143,8 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <button mat-button class="btn-add-skill col-sm-12"
-                                                (click)="addSkillSet()"><i
-                                                    class="bi bi-plus-circle icon-add-skill"></i></button>
+                                                (click)="addSkillSet()"><em
+                                                    class="bi bi-plus-circle icon-add-skill"></em></button>
                                         </div>
                                     </div>
                                 </div>
