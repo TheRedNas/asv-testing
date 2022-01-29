@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:ci": "ng test --watch=false --karma-config src/karma-ci.conf.js"
   },
   "private": true,
   "dependencies": {
@@ -32,6 +33,7 @@
     "bootstrap-icons": "^1.5.0",
     "font-awesome": "^4.7.0",
     "froala-editor": "^4.0.6",
+    "karma-sonarqube-unit-reporter": "^0.0.23",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
