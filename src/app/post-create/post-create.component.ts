@@ -79,6 +79,14 @@ export class PostCreateComponent {
     return this.allHighlights.filter(highlight => highlight.toLowerCase().includes(filterValue));
   }
 
+  public createPost(post: Post) {
+    return true;
+  }
+
+  public removePost(post: Post) {
+    return true;
+  }
+
   async createNewPost(form: NgForm) {
     const title = form.value.title;
     const highlights = this.highlights;

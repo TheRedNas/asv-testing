@@ -3,9 +3,13 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MsalModule, MsalInterceptor, MSAL_INSTANCE, MSAL_GUARD_CONFIG, MSAL_INTERCEPTOR_CONFIG, MsalService, MsalGuard, MsalBroadcastService, MsalInterceptorConfiguration, MsalGuardConfiguration } from '@azure/msal-angular';
 import { IPublicClientApplication, PublicClientApplication, InteractionType } from '@azure/msal-browser';
+import { Category } from 'src/models/category-enum';
+import { Freelancer } from 'src/models/Freelancer';
+import { Comment } from 'src/models/comment';
 import { msalConfig, protectedResources, loginRequest } from '../auth-config';
-
 import { PostComponent } from './post.component';
+import { Company } from 'src/models/Company';
+import { Post } from 'src/models/post';
 
 describe('PostComponent', () => {
   let component: PostComponent;
@@ -50,6 +54,23 @@ describe('PostComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should apply to job post', () => {
+    const id = "TestUserGenerated";
+    const freelancer = new Freelancer(id, "", Category.IT, "", "", "", "", "", "", "");
+    const company = new Company("","",Category.IT,"","","","","");
+    const highlights: string[] = [];
+    const content = "javascript:alert(‘Executed!’);";
+    const post = new Post(company, "", "", content, highlights);
+    let result = false;
+ 
+    component.createPost(post, company);
+    result = component.applyToPost(post, freelancer);
+    component.removeApplyToPost(post, freelancer);
+ 
+    expect(result).toBeTruthy();
+  });
+
 });
 /**
  * Here we pass the configuration parameters to create an MSAL instance.

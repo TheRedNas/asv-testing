@@ -5,6 +5,7 @@ import { UserService } from 'src/services/user.service';
 import { Company } from 'src/models/Company';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/models/post';
+import { Freelancer } from 'src/models/Freelancer';
 
 @Component({
   selector: 'app-post',
@@ -52,8 +53,16 @@ export class PostComponent implements OnInit {
     )
   }
 
-  getContent(content: string = "") {
-    return content
+  createPost(post: Post, company: Company) {
+
+  }
+
+  applyToPost (post: Post, freelancer: Freelancer) {
+    return true;
+  }
+
+  removeApplyToPost(post: Post, freelancer: Freelancer) {
+    return true;
   }
 
   GetUserCompany(accountId: string) {

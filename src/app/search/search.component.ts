@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Category } from "src/models/category-enum";
+import { Company } from "src/models/Company";
 import { Post } from "src/models/post";
 import { PostService } from "../../services/post.service";
 
@@ -20,6 +22,12 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
 
     this.updateData();
+  }
+
+  getPosts(searchTerm: string, filter: string[], resultPerPage: number, offset: number): Post[] {
+    let results: Post[] = [];
+    results.push(new Post(new Company("","",Category.IT,"","","","",""), "Test post", "Test content", "", []));
+    return results;
   }
 
   updateData() {

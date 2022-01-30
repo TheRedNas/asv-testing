@@ -3,6 +3,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MsalModule, MsalInterceptor, MSAL_INSTANCE, MSAL_GUARD_CONFIG, MSAL_INTERCEPTOR_CONFIG, MsalService, MsalGuard, MsalBroadcastService, MsalInterceptorConfiguration, MsalGuardConfiguration } from '@azure/msal-angular';
 import { IPublicClientApplication, PublicClientApplication, InteractionType } from '@azure/msal-browser';
+import { Category } from 'src/models/category-enum';
+import { Company } from 'src/models/Company';
+import { Post } from 'src/models/post';
 import { msalConfig, protectedResources, loginRequest } from '../auth-config';
 
 import { SearchComponent } from './search.component';
@@ -51,9 +54,20 @@ describe('ProfileFreelancerComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should search', () => {
-      component.searchTerm = "back-end"
+  it('should get correct searchresult', () => {
+    let expectedResult: Post[] = [];
+    expectedResult.push(new Post(new Company("","",Category.IT,"","","","",""), "Test post", "Test content", "", []));
+    const searchterm = "Test post";
+    const filter: string[] = ["testPost"];
+    const resultsPerPage: number = 1;
+    const offset: number = 1;
+    let result: Post[];
+
+    result = component.getPosts(searchterm, filter, resultsPerPage, offset);
+
+    expect(result).toEqual(expectedResult);
   });
+
 });
 
 /**

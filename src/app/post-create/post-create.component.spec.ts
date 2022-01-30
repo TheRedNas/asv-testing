@@ -7,6 +7,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { loginRequest, msalConfig, protectedResources } from '../auth-config';
 
 import { PostCreateComponent } from './post-create.component';
+import { Post } from 'src/models/post';
+import { Company } from 'src/models/Company';
+import { Category } from 'src/models/enums/Category';
 
 describe('PostCreateComponent', () => {
   let component: PostCreateComponent;
@@ -51,6 +54,20 @@ describe('PostCreateComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create user', () => {
+    const company = new Company("","",Category.IT,"","","","","");
+    const highlights: string[] = [];
+    const content = "javascript:alert(‘Executed!’);";
+    const post = new Post(company, "", "", content, highlights);
+    let result = false;
+
+    result = component.createPost(post);
+    component.removePost(post);
+
+    expect(result).toBeTruthy();
+  });
+
 });
 /**
  * Here we pass the configuration parameters to create an MSAL instance.

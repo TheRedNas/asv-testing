@@ -11,4 +11,8 @@ export class RegisterComponent {
   public createNewFreelancer(user: Freelancer) {
     return true;
   }
+
+  public removeFreelancer(user: Freelancer) {
+    return true;
+  }
 }

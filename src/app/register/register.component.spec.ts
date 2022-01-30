@@ -28,8 +28,12 @@ describe('RegisterComponent', () => {
   it('should create user', () => {
     const id = "TestUserGenerated";
     const user = new Freelancer(id, "", Category.IT, "", "", "", "", "", "", "");
-    const component = TestBed.createComponent(RegisterComponent).componentInstance;
+    let result = false;
 
-    expect(component.createNewFreelancer(user)).toBeTruthy();
+    result = component.createNewFreelancer(user);
+    component.removeFreelancer(user);
+
+    expect(result).toBeTruthy();
   });
+
 });
